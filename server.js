@@ -27,16 +27,16 @@ app.leaguevineClientSecretKey = process.env.LEAGUEVINE_CLIENT_SECRET_KEY;
 app.use(express.static('public'));
 app.use(session({
   secret: process.env.SESSION_SECRET,
+  key: process.env.SESSION_KEY,
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
+  saveUninitialized: false
 }))
 
-var urlGetAuthCode = `https://www.leaguevine.com/oauth2/authorize/?client_id=${app.leaguevineClientId}&response_type=code&redirect_uri=${app.leaguevineRedirectURI}&scope=universal`;
-var urlGetAccessToken = `https://www.leaguevine.com/oauth2/token/?client_id=${app.leaguevineClientId}&client_secret=${app.leaguevineClientSecretKey}&grant_type=authorization_code&redirect_uri=${app.leaguevineRedirectURI}`;
+var urlGetAuthCode = `http://www.playwithlv.com/oauth2/authorize/?client_id=${app.leaguevineClientId}&response_type=code&redirect_uri=${app.leaguevineRedirectURI}&scope=universal`;
+var urlGetAccessToken = `http://www.playwithlv.com/oauth2/token/?client_id=${app.leaguevineClientId}&client_secret=${app.leaguevineClientSecretKey}&grant_type=authorization_code&redirect_uri=${app.leaguevineRedirectURI}`;
 
 app.get('/', function(req, res) {
-	console.log(req.session)
+	console.log(req.session.accessToken)
 	res.render('index');
 });
 
@@ -48,9 +48,14 @@ app.get('/success', function(req, res) {
 	var code = req.query.code;
 
 	request(urlGetAccessToken + `&code=${req.query.code}`, function(err, response, body) {
-		req.session.accessToken = body;
+		var data = JSON.parse(body);
+		req.session.accessToken = data.access_token;
 
-		res.render('index');
+		// request(`http://api.playwithlv.com/v1/games/234/?access_token=${req.session.accessToken}`, function(err, response, body) {
+		// 	console.log(body);
+		// });
+
+		res.redirect('/');
 	});
 });
 
