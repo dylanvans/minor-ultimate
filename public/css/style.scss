@@ -7,35 +7,84 @@ html, body {
 
 body {
 	color: $main-white;
-	font-family: 'source_sans_proregular', sans-serif;
+	font-family: 'source_sans_prolight', sans-serif;
 }
 
 main, footer {
+	box-sizing: border-box;
+	position: relative;
+}
+
+section {
 	padding: $margin;
+	box-shadow: 0 5px 5px -2px rgba(194,194,194,0.50);
+}
+
+main header {
+	padding: $margin;
+}
+
+p {
+	letter-spacing: $letter-spacing*.9;
 }
 
 a {
 	color: inherit;
 }
 
+// Form
+// ===========
+
+fieldset {
+	border: 0;
+	padding: 0;
+	margin: $margin 0;
+	display: flex;
+}
+
+input {
+	box-sizing: border-box;
+	border: 0;
+	width: 100%;
+	font-family: inherit;
+	font-size: inherit;
+	padding: $margin*.5 $margin*.7;
+	border-radius: $border-radius;
+}
+
+button {
+	border: 0;
+	font-family: inherit;
+	font-size: inherit;
+	background-color: $main-orange;
+	color: $main-white;
+	font-family: 'source_sans_proregular', sans-serif;
+	border-radius: $border-radius;
+	letter-spacing: $letter-spacing*1.5;
+	padding: $margin*.5 $margin;
+	width: 100%;
+}
+
+.container {
+	color: $main-black;
+}
+
 // Headings
 // ===========
 h1, h2, h3, h4 {
 	font-family: 'catorze27_bold', sans-serif;
-	letter-spacing: .08em;
+	letter-spacing: $letter-spacing*2;
 	color: $sub-blue;
-}
-
-// Form
-// ===========
-.container-form {
-	padding: 1em;
-	background-color: $sub-blue;
-	border-radius: $border-radius;
+	margin-top: 0;
+	margin-bottom: $margin;
 }
 
 // Navbar
 // ===========
+.navbar {
+	font-family: 'source_sans_proregular', sans-serif;
+}
+
 .navbar ul {
 	list-style-type: none;
 	margin: 0;
@@ -43,14 +92,19 @@ h1, h2, h3, h4 {
 	display: flex;
 }
 
-.navbar li a {
+.navbar a {
 	text-decoration: none;
 }
 
 .navbar-list li {
 	background-color: $sub-orange;
 	border: 1px solid $main-white;
+	border-bottom: 0;
 	width: calc(100%/3);
+}
+
+.navbar-list li.active-nav {
+	background-color: $main-orange;
 }
 
 .navbar-list li a {
@@ -70,7 +124,7 @@ h1, h2, h3, h4 {
 }
 
 .navbar-list li p {
-	letter-spacing: .08em;
+	letter-spacing: $letter-spacing;
 	text-align: center;
 	margin: 0;
 	padding-top: $margin*.5;
@@ -89,6 +143,124 @@ h1, h2, h3, h4 {
 	height: 2.5em;
 }
 
+.nav-account-options a:nth-child(2) {
+	margin-left: .5*$margin;
+}
+
+.nav-account-options a:hover {
+	text-decoration: underline;
+}
+
+// Dark section
+// ===========
+.dark-section {
+	background-color: $sub-blue;
+	color: $main-white;
+}
+
+.dark-section-content {
+	background-color: $main-blue;
+	border-radius: $border-radius;
+	padding: $margin;
+}
+
+.dark-section-content p {
+	margin: 0;
+}
+
+.dark-section h1, .dark-section h2 {
+	color: $main-white;
+}
+
+
+// Login / Register
+// ===========
+.register-message {
+
+}
+
+
+// Gameblock
+// ===========
+.container-game {
+	padding: $margin;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: $margin;
+	background-color: $main-blue;
+	color: white;
+	border-radius: $border-radius;
+	font-family: source_sans_prolight;
+}
+
+.container-game p {
+	margin: 0;
+	text-transform: uppercase;
+	letter-spacing: $letter-spacing;
+}
+
+.game-team {
+	display: flex;
+	align-items: center;
+	width: 35%;
+}
+
+.game-team p {
+	line-height: 107%;
+	font-size: .95em;
+}
+
+.game-team-2 {
+	justify-content: flex-end;
+	text-align: right;
+}
+
+.game-score {
+	width: 30%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-score p {
+	white-space: nowrap;
+	text-align: center;
+	font-family: 'catorze27_black';
+	font-size: 2em;
+}
+
+.game-score div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(100%/3);
+}
+
+// Flash messages
+// ===========
+.container-flash-message {
+	box-sizing: border-box;
+	padding: $margin;
+	color: $main-black;
+	border-radius: $border-radius;
+}
+
+.container-flash-message.flash-info {
+	border-bottom: 3px solid $main-purple;
+}
+
+.container-flash-message.flash-error {
+	border-bottom: 3px solid $main-red;
+}
+
+.container-flash-message.flash-success {
+	border-bottom: 3px solid $main-green;
+}
+
+.container-flash-message p {
+	margin: 0;
+}
 
 @media only screen and (min-width : 768px) {
 	.navbar {

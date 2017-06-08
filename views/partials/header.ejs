@@ -9,30 +9,35 @@
 <body>
 	<header>
 		<nav class="navbar">
-			<ul class="navbar-account-list">
+			<div class="navbar-account-list">
 				<div class="logo-container">
 					<img src="/img/windmill_logo.png" alt="windmill logo" class="windmill-logo">
 				</div>
 				<% if(user) { %>
-				<li><a href="/logout">Log Out</a></li>
+				<div class="nav-account-options">
+					<a href="/logout">Log Out</a>
+					<a href="/account">Account</a>
+				</div>
 				<% } else { %>
-				<li><a href="/login">Log In</a></li>
+				<div class="nav-account-options">
+					<a href="/login">Log In</a>
+				</div>
 				<% } %>
-			</ul>
+			</div>
 			<ul class="navbar-list">
-				<li>
+				<li class="<%= title == 'Home' ? 'active-nav' : '' %>" >
 					<a href="/">
 						<img src="/img/icon-home.png" alt="">
 						<p>Home</p>
 					</a>
 				</li>
-				<li>
+				<li class="<%= title == 'My Team' ? 'active-nav' : '' %>">
 					<a href="/my-team">
 						<img src="/img/icon-my-team.png" alt="">
 						<p>My Team</p>
 					</a>
 				</li>
-				<li>
+				<li class="<%= title == 'Info' ? 'active-nav' : '' %>">
 					<a href="/info">
 						<img src="/img/icon-info.png" alt="">
 						<p>Info</p>
@@ -41,9 +46,14 @@
 			</ul>
 		</nav>
 	</header>
-	<% if(locals.flashes) { 
-	%>
-
-		<p><%-	JSON.stringify(locals.flashes)%></p>
+	<% if(flashes) { 
+	const arrayCategories = Object.keys(flashes);
+		arrayCategories.forEach(cat => {
+			flashes[cat].forEach(message => { %>
+			<div class="container-flash-message flash-<%= cat %>">
+				<p class="flash-text"><%= message %></p>
+			</div>
+		<% 	});
+		}); %>
 	<% } %>
 	<main>

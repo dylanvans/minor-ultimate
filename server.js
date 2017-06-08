@@ -10,6 +10,7 @@ mongoose.connection.on('error', (err) => {
 
 // Import models
 require('./models/User');
+require('./models/Team');
 
 // Require
 const path = require('path');
@@ -25,6 +26,7 @@ const expressValidator = require('express-validator');
 const routes = require('./routes/index');
 const sockets = require('./sockets');
 require('./handlers/passport');
+require('./handlers/leaguevine');
 
 // Config
 const app = express();

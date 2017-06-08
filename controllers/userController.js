@@ -1,18 +1,20 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
+const Team = mongoose.model('Team');
 const promisify = require('es6-promisify');
 
 exports.loginPage = (req, res) => {
-	req.flash('info', 'login pagina')
 	res.render('login', {
 		title: 'Login',
 		authUrl: '/'
 	});
 }
 
-exports.registerForm = (req, res) => {
+exports.registerForm = async (req, res) => {
+	const teams = await Team.find();
 	res.render('register', {
-		title: 'Register'
+		title: 'Register',
+		teams
 	});
 }
 
@@ -25,11 +27,10 @@ exports.validateRegister = (req, res, next) => {
 
 	const errors = req.validationErrors(); // Method that checks all validation errors above
 	if (errors) {
-		console.log(errors)
-		res.render('register', {
-			title: 'Register',
-			body: req.body
-		});
+		req.flash('error', errors);
+		// TODO::
+		// flashes when validate errors occur
+		res.redirect('/register')
 		return;
 	}
 	next();

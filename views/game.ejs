@@ -1,8 +1,12 @@
 <% include partials/header.ejs %>
-	<h1>Game</h1>
-	<p><%= data.start_time%></p>
-	<label for="team1Score">Team 1</label>
-	<input type="number" id="team1Score" value="<%=data.team_1_score%>">
-	<label for="team2Score">Team 2</label>
-	<input type="number" id="team2Score" value="<%=data.team_2_score%>">
+	<header>
+		<h1 class="main-heading"><%= title %></h1>
+	</header>
+	<section>
+			<p><%= data.start_time%></p>
+		<label for="team1Score">Team 1</label>
+		<input type="number" id="team1Score" value="<%=data.team_1_score%>">
+		<label for="team2Score">Team 2</label>
+		<input type="number" id="team2Score" value="<%=data.team_2_score%>">
+	</section>
 <% include partials/footer.ejs %>

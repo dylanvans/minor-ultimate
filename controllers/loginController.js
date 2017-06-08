@@ -31,12 +31,23 @@ exports.onSuccess = (req, res) => {
 
 exports.login = passport.authenticate('local', {
 	failureRedirect: '/login',
-	failureFlash: 'Login Failed',
+	failureFlash: 'Oops, something went wrong logging you in',
 	successRedirect: '/',
-	successFlash: 'Login Successfull'
+	successFlash: 'You are now logged in'
 });
 
 exports.logout = (req, res) => {
+	req.flash('success', 'You are now logged out')
 	req.logout(); // Build in passport.js
 	res.redirect('/');	
+}
+
+exports.isLoggedIn = (req, res, next) => {
+	if(req.isAuthenticated()) {
+		next();
+		return;
+	}
+
+	req.flash('error', 'You must be logged in to visit this page');
+	res.redirect('/login');
 }

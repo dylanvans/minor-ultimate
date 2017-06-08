@@ -21,3 +21,9 @@ exports.homePage = (req, res) => {
 		games: []
 	})
 }
+
+exports.infoPage = (req, res) => {
+	res.render('info', {
+		title: 'Info',
+	})
+}

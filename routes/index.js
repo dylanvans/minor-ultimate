@@ -9,12 +9,13 @@ const { catchErrors } = require('../handlers/errorHandlers');
 const router = express.Router();
 
 router.get('/', homeController.homePage);
-router.get('/my-team', teamController.myTeam);
+router.get('/my-team', loginController.isLoggedIn, catchErrors(teamController.myTeam));
+router.get('/info', homeController.infoPage);
 
 router.get('/login', userController.loginPage);
 router.post('/login', loginController.login);
 router.get('/logout', loginController.logout);
-router.get('/register', userController.registerForm);
+router.get('/register', catchErrors(userController.registerForm));
 router.post('/register', 
 	userController.validateRegister,
 	catchErrors(userController.register),

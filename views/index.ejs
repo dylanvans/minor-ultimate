@@ -1,14 +1,14 @@
 <% include partials/header.ejs %>
 <div class="container">
-	<h2><%= title %></h2>
-	<section class="container-live-games view-list-game">
-	<% games.forEach(function(game) {%>
-	   <div class="live-game">
-	   		<p><%= game.start_time %></p>
-			<p><%= game.team_1.name %> - <%= game.team_2.name %></p>
-			<button class="btn-to-game" data-gameid="199777">Track score</button>
+	<section class="dark-section">
+		<h2>Live Games</h2>
+		<div class="dark-section-content">
+			<p>There are no live games at the moment</p>
 		</div>
-	<% }); %>
+	</section>
+	<section>
+		<h2>Updates</h2>
+		<p>There are no updates at the moment</p>
 	</section>
 </div>
 <% include partials/footer.ejs %>

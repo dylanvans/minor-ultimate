@@ -17,8 +17,8 @@ const userSchema = new Schema({
 		trim: true
 	},
 	team: {
-		type: String,
-		trim: true
+		type: mongoose.Schema.ObjectId,
+		ref: 'Team'
 	}
 });
 
