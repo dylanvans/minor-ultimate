@@ -1,30 +1,44 @@
 {
-  "name": "Ultimate Score App",
+  "name": "Ultimate-score-app",
   "version": "1.0.0",
-  "description": "Ultimate Score App",
+  "description": "Windmill Ultimate Score App",
   "author": "Dylan van Sprang <dylanvansprang@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dylanvans/real-time-web"
+    "url": "https://github.com/dylanvans/minor-ultimate"
   },
   "scripts": {
     "lint": "xo",
-    "start": "nodemon server.js"
+    "css": "node-sass public/css/style.scss -o public/css",
+    "css:watch": "npm run css && node-sass public/css/style.scss -wo public/css",
+    "dev": "npm run css:watch",
+    "start": "nodemon server.js --ignore public/"
   },
   "license": "MIT",
   "devDependencies": {
     "browserify": "^14.3.0",
+    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "xo": "^0.18.1"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
     "compression": "^1.6.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.6",
+    "es6-promisify": "^5.0.0",
     "express": "^4.15.2",
     "express-session": "^1.15.3",
-    "request": "^2.81.0"
+    "express-validator": "^3.2.0",
+    "mongoose": "^4.10.5",
+    "mongoose-mongodb-errors": "0.0.2",
+    "passport": "^0.3.2",
+    "passport-local-mongoose": "^4.0.0",
+    "request": "^2.81.0",
+    "socket.io": "^2.0.2",
+    "validator": "^7.0.0"
   },
   "xo": {
     "esnext": false,

@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'source_sans_problack';
+    src: url('../fonts/sourcesanspro-black-webfont.woff2') format('woff2'),
+         url('../fonts/sourcesanspro-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'source_sans_probold';
+    src: url('../fonts/sourcesanspro-bold-webfont.woff2') format('woff2'),
+         url('../fonts/sourcesanspro-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'source_sans_proextralight';
+    src: url('../fonts/sourcesanspro-extralight-webfont.woff2') format('woff2'),
+         url('../fonts/sourcesanspro-extralight-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'source_sans_prolight';
+    src: url('../fonts/sourcesanspro-light-webfont.woff2') format('woff2'),
+         url('../fonts/sourcesanspro-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'source_sans_proregular';
+    src: url('../fonts/sourcesanspro-regular-webfont.woff2') format('woff2'),
+         url('../fonts/sourcesanspro-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'source_sans_prosemibold';
+    src: url('../fonts/sourcesanspro-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/sourcesanspro-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'catorze27_black';
+    src: url('../fonts/catorze27style1-black-webfont.woff2') format('woff2'),
+         url('../fonts/catorze27style1-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'catorze27_bold';
+    src: url('../fonts/catorze27style1-bold-webfont.woff2') format('woff2'),
+         url('../fonts/catorze27style1-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+$margin: .97em;
+$border-radius: 5px;
+
+$main-white: #FFFFFF;
+$main-black: #434343;
+$main-blue: #2CAAE1;
+$sub-blue: #0B6E99;
+$main-orange: #FF9E00;
+$sub-orange: #FFD999;

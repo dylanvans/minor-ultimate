@@ -1,0 +1,25 @@
+<% include partials/header.ejs %>
+<div class="container">
+	<h2><%= title %></h2>
+	<div class="container-form">
+		<form class="login-form" action="/register" method="POST">
+			<fieldset>
+				<label for="name">Name</label>
+				<input type="text" id="name" name="name" required>
+			</fieldset>
+			<fieldset>
+				<label for="team">Team</label>
+				<input type="text" id="team" name="team">
+			</fieldset>
+			<fieldset>
+				<label for="password">Password</label>
+				<input type="password" id="password" name="password" required>
+				<label for="password-confirm">Confirm Password</label>
+				<input type="password" id="password-confirm" name="password-confirm" required>
+			</fieldset>
+			
+			<button type="submit">Register</button>
+		</form>
+	</div>
+</div>
+<% include partials/footer.ejs %>

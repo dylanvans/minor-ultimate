@@ -3,8 +3,47 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Ultimate frisbee Score App</title>
+	<title><%= title %> - Windmill App</title>
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-	
+	<header>
+		<nav class="navbar">
+			<ul class="navbar-account-list">
+				<div class="logo-container">
+					<img src="/img/windmill_logo.png" alt="windmill logo" class="windmill-logo">
+				</div>
+				<% if(user) { %>
+				<li><a href="/logout">Log Out</a></li>
+				<% } else { %>
+				<li><a href="/login">Log In</a></li>
+				<% } %>
+			</ul>
+			<ul class="navbar-list">
+				<li>
+					<a href="/">
+						<img src="/img/icon-home.png" alt="">
+						<p>Home</p>
+					</a>
+				</li>
+				<li>
+					<a href="/my-team">
+						<img src="/img/icon-my-team.png" alt="">
+						<p>My Team</p>
+					</a>
+				</li>
+				<li>
+					<a href="/info">
+						<img src="/img/icon-info.png" alt="">
+						<p>Info</p>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<% if(locals.flashes) { 
+	%>
+
+		<p><%-	JSON.stringify(locals.flashes)%></p>
+	<% } %>
+	<main>
