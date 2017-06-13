@@ -13,7 +13,7 @@
     "css:watch": "npm run css && node-sass public/css/style.scss -wo public/css",
     "dev": "npm run css:watch",
     "leaguevine-data": "node load-leaguevine-data.js",
-    "start": "node server.js"
+    "start": "nodemon server.js --ignore public/"
   },
   "license": "MIT",
   "devDependencies": {
@@ -52,5 +52,9 @@
     "rules": {
       "space-before-function-paren": 0
     }
+  },
+  "engines": {
+    "node": ">= 7.6.0"
   }
+}
 }
