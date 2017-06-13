@@ -25,7 +25,11 @@ LEAGUEVINE_REDIRECT_URI
 LEAGUEVINE_CLIENT_ID
 LEAGUEVINE_CLIENT_SECRET_KEY
 ```
-4. Start server
+4. Load tournament teams
+```
+npm run leaguevine-data
+```
+5. Start server
 ```
 npm start
 ```
