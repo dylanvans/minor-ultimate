@@ -17,7 +17,7 @@ const teamsFromTournamentOptions = {
     qs: {
         tournament_ids: `[${tournamentId}]`,
         season_id: seasonId,
-        access_token: universalAccessCode,
+        access_token: universalAccessToken,
         limit: 70
     },
     json: true
@@ -39,7 +39,7 @@ rp(teamsFromTournamentOptions)
         qs: {
           team_ids: `[${idArray.join(',')}]`,
             season_id: seasonId,
-            access_token: universalAccessCode,
+            access_token: universalAccessToken,
             limit: teams.length
         },
         json: true

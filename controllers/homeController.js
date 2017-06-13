@@ -1,24 +1,48 @@
 const request = require('request');
+const moment = require('moment');
+const rp = require('request-promise');
+require('dotenv').config();
 
-exports.homePage = (req, res) => {
-	// req.session.accessToken = '8d630cf0cd'; // dev
-	// if(!req.session.accessToken) {
-	// 	res.redirect('/login');
-	// } else {
-	// 	console.log(req.session.accessToken)
-	// 	request(`http://api.playwithlv.com/v1/games/?tournament_id=20058&limit=10&starts_before=2016-06-03T11%3A20%3A00%2B02%3A00&access_token=${req.session.accessToken}`, function(err, response, body) {
-	// 		const data = JSON.parse(body);
-	// 		console.log(data.objects[0])
-	// 		res.render('index', {
-	// 			title: 'Home',
-	// 			games: data.objects
-	// 		})
-	// 	});	
-	// }
+const universalAccessToken = process.env.UNIVERSALACCESSTOKEN;
+const seasonId = process.env.SEASONID;
+const tournamentId = process.env.TOURNAMENTID;
+
+const momentFormat = 'YYYY-MM-DDTHH:mm:ss+02:00'; // TO DO timezone  still hardcoded
+
+exports.homePage = async (req, res) => {
+	const currentTime = moment().format(momentFormat);
+
+	const getGamesOptions = {
+	    uri: 'http://api.playwithlv.com/v1/games/',
+	    qs: {
+	        tournament_id: tournamentId,
+	        season_id: seasonId,
+	        starts_before: currentTime,
+	        access_token: universalAccessToken
+	    },
+	    json: true
+	};
+
+	let games = [];
+
+	await rp(getGamesOptions)
+		.then(data => {
+			games = data.objects;
+			games = games.filter(game => {
+				const startTime = moment(game.start_time, momentFormat);
+				const endTime = moment(startTime).add(90, 'm'); // TO DO 90 minutes still hardcoded
+				if(moment(currentTime).isBetween(startTime, endTime)) {
+					return game;
+				}
+			});
+		})
+	    .catch(err => {
+			console.log(`Oops API call failed: ${err}`)
+	    });
 
 	res.render('index', {
 		title: 'Home',
-		games: []
+		games
 	})
 }
 

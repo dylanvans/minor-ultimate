@@ -1,40 +1,89 @@
 <% include partials/header.ejs %>
 <div class="container">
-	<header>
-		<h1 class="main-heading"><%= team.name %></h1>
-		<!-- <p><%= team.description %></p> -->
-	</header>
 	<section>
 		<h2>To Do</h2>
 		<p>Nice job! All scores and spirit points are submitted!</p>
 	</section>
-	<section>
-		<h2>Results</h2>
-		<% team.games.forEach(game => { %>
-		<div class="container-game">
-			<div class="game-team game-team-1">
-				<p><%= game.team_1.short_name %></p>
-			</div>
-			<div class="game-score">
-				<div>
-					<p><%= game.team_1_score %></p>
+	<% if(team.liveGames.length) { %>
+	<section class="dark-section">
+		<h2>Live Game</h2>
+		<% team.liveGames.forEach(game => { %>
+			<a class="container-game" href="game/<%= game.id %>">
+				<div class="game-team game-team-1">
+					<p><%= game.team_1.short_name %></p>
 				</div>
-				<div>
-					<p> - </p>
+				<div class="game-score">
+					<div>
+						<p><%= game.team_1_score %></p>
+					</div>
+					<div>
+						<p> - </p>
+					</div>
+					<div>
+						<p><%= game.team_2_score %></p>
+					</div>
 				</div>
-				<div>
-					<p><%= game.team_2_score %></p>
+				<div class="game-team game-team-2">
+					<p><%= game.team_2.short_name %></p>
 				</div>
-			</div>
-			<div class="game-team game-team-2">
-				<p><%= game.team_2.short_name %></p>
-			</div>
-		</div>
+			</a>
 		<% }) %>
 	</section>
+	<% } %>
+	<% if(team.upcomingGames.length) { %>
+	<section class="dark-section">
+		<h2>Next Game</h2>
+		<% team.upcomingGames.forEach(game => { %>
+			<a class="container-game" href="game/<%= game.id %>">
+				<div class="game-team game-team-1">
+					<p><%= game.team_1.short_name %></p>
+				</div>
+				<div class="game-score">
+					<div>
+						<p><%= game.team_1_score %></p>
+					</div>
+					<div>
+						<p> - </p>
+					</div>
+					<div>
+						<p><%= game.team_2_score %></p>
+					</div>
+				</div>
+				<div class="game-team game-team-2">
+					<p><%= game.team_2.short_name %></p>
+				</div>
+			</a>
+		<% }) %>
+	</section>
+	<% } %>
+	<% if(team.finishedGames.length) { %>
+	<section>
+		<h2>Results</h2>
+		<% team.finishedGames.forEach(game => { %>
+			<a class="container-game" href="game/<%= game.id %>">
+				<div class="game-team game-team-1">
+					<p><%= game.team_1.short_name %></p>
+				</div>
+				<div class="game-score">
+					<div>
+						<p><%= game.team_1_score %></p>
+					</div>
+					<div>
+						<p> - </p>
+					</div>
+					<div>
+						<p><%= game.team_2_score %></p>
+					</div>
+				</div>
+				<div class="game-team game-team-2">
+					<p><%= game.team_2.short_name %></p>
+				</div>
+			</a>
+		<% }) %>
+	</section>
+	<% } %>
 	<section>
 		<h2>Swiss Standing</h2>
 	</section>
-	
 </div>
 <% include partials/footer.ejs %>

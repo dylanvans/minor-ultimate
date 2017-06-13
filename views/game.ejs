@@ -1,12 +1,24 @@
 <% include partials/header.ejs %>
-	<header>
-		<h1 class="main-heading"><%= title %></h1>
-	</header>
+	<section class="dark-section">
+		<div class="container-score">
+			<div class="score-team">
+				<p class="score-team-name"><%= game.team_1.short_name %></p>
+				<p class="score-team-score"><%= game.team_1_score %></p>
+			</div>
+			<div class="score-team">
+				<p class="score-team-name"><%= game.team_2.short_name %></p>
+				<p class="score-team-score"><%= game.team_2_score %></p>
+			</div>
+		</div>
+		<a href="#" class="button">Keep Score</a>
+		<!-- <div class="container-keep-score">
+			<label for="team1-score"><%= game.team_1.name %></label>
+			<input type="number" id="team1-score" value="<%=game.team_1_score%>">
+			<label for="team2-score"><%= game.team_2.name %></label>
+			<input type="number" id="team2-score" value="<%=game.team_2_score%>">
+		</div> -->
+	</section>
 	<section>
-			<p><%= data.start_time%></p>
-		<label for="team1Score">Team 1</label>
-		<input type="number" id="team1Score" value="<%=data.team_1_score%>">
-		<label for="team2Score">Team 2</label>
-		<input type="number" id="team2Score" value="<%=data.team_2_score%>">
+		<h2>Previous Scores</h2>
 	</section>
 <% include partials/footer.ejs %>

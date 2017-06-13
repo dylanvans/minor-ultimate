@@ -1,9 +1,32 @@
 <% include partials/header.ejs %>
 <div class="container">
 	<section class="dark-section">
-		<h2>Live Games</h2>
-		<div class="dark-section-content">
-			<p>There are no live games at the moment</p>
+		<div class="container">
+			<h2>Live Games</h2>
+			<% games.forEach(game => { %>
+				<a class="container-game" href="game/<%= game.id %>">
+					<div class="game-team game-team-1">
+						<p><%= game.team_1.short_name %></p>
+					</div>
+					<div class="game-score">
+						<div>
+							<p><%= game.team_1_score %></p>
+						</div>
+						<div>
+							<p> - </p>
+						</div>
+						<div>
+							<p><%= game.team_2_score %></p>
+						</div>
+					</div>
+					<div class="game-team game-team-2">
+						<p><%= game.team_2.short_name %></p>
+					</div>
+				</a>
+			<% }) %>
+			<% if(!games) { %>
+				<p>There are no live games at the moment</p>
+			<% } %>
 		</div>
 	</section>
 	<section>

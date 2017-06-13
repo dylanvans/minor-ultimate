@@ -8,7 +8,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 
 const router = express.Router();
 
-router.get('/', homeController.homePage);
+router.get('/', catchErrors(homeController.homePage));
 router.get('/my-team', loginController.isLoggedIn, catchErrors(teamController.myTeam));
 router.get('/info', homeController.infoPage);
 
@@ -24,6 +24,6 @@ router.post('/register',
 
 router.get('/success', loginController.onSuccess);
 
-router.get('/game/:id', gameController.gamePage);
+router.get('/game/:id', catchErrors(gameController.gamePage));
 
 module.exports = router;

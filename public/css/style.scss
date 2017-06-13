@@ -52,17 +52,21 @@ input {
 	border-radius: $border-radius;
 }
 
-button {
+button, .button {
+	text-decoration: none;
 	border: 0;
-	font-family: inherit;
+	text-align: center;
+	display: block;
+	box-sizing: border-box;
 	font-size: inherit;
 	background-color: $main-orange;
 	color: $main-white;
-	font-family: 'source_sans_proregular', sans-serif;
+	font-family: 'source_sans_prolight', sans-serif;
+	text-transform: uppercase;
 	border-radius: $border-radius;
 	letter-spacing: $letter-spacing*1.5;
 	padding: $margin*.5 $margin;
-	width: 100%;
+	margin: 0 auto;
 }
 
 .container {
@@ -154,6 +158,8 @@ h1, h2, h3, h4 {
 // Dark section
 // ===========
 .dark-section {
+	display: flex;
+	flex-direction: column;
 	background-color: $sub-blue;
 	color: $main-white;
 }
@@ -183,6 +189,7 @@ h1, h2, h3, h4 {
 // Gameblock
 // ===========
 .container-game {
+	text-decoration: none;
 	padding: $margin;
 	display: flex;
 	justify-content: space-between;
@@ -236,6 +243,39 @@ h1, h2, h3, h4 {
 	align-items: center;
 	width: calc(100%/3);
 }
+
+
+
+// Score
+// ===========
+.container-score {
+	display: flex;
+	justify-content: space-around;
+}
+
+.score-team {
+	padding: $margin;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.score-team p {
+	margin: 0;
+}
+
+.score-team-name {
+	text-transform: uppercase;
+}
+
+.score-team-score {
+	padding: $margin;
+	font-family: 'catorze27_bold', sans-serif;
+	font-size: 3em;
+}
+
+
 
 // Flash messages
 // ===========
