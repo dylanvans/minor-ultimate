@@ -35,7 +35,6 @@ setTimeout(() => {
 	leaguevineHandler.setLiveGames();
 }, 120000);
 
-// Config
 const app = express();
 
 http = http.createServer(app);
