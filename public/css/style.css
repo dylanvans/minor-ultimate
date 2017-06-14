@@ -71,6 +71,9 @@ p {
 a {
   color: inherit; }
 
+.js-hide {
+  display: none; }
+
 fieldset {
   border: 0;
   padding: 0;

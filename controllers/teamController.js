@@ -41,7 +41,8 @@ exports.myTeam = async (req, res) => {
 	    games.forEach(game => {
 	    	const startTime = moment(game.start_time, momentFormat);
 			const endTime = moment(startTime, momentFormat).add(90, 'm'); // TO DO 90 minutes still hardcoded
-
+ 
+ 			// To DO get live game from DB instead of calculation
 			if (moment(currentTime, momentFormat).isBefore(moment(startTime, momentFormat))) {
 				team.upcomingGames.push(game)
 			} else if (moment(currentTime, momentFormat).isBetween(moment(startTime), moment(endTime))) {

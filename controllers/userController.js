@@ -28,8 +28,7 @@ exports.validateRegister = (req, res, next) => {
 	const errors = req.validationErrors(); // Method that checks all validation errors above
 	if (errors) {
 		req.flash('error', errors);
-		// TODO::
-		// flashes when validate errors occur
+		// TODO flashes when validate errors occur
 		res.redirect('/register')
 		return;
 	}

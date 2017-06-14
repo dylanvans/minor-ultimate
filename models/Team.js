@@ -32,11 +32,11 @@ const teamSchema = new mongoose.Schema({
 });
 
 // Links users to teams
-teamSchema.virtual('members', {
-	ref: 'User', // Which model to link
-	localField: 'name', // which field linked in Team
-	foreignField: 'team' // which field linked in User
-});
+// teamSchema.virtual('members', {
+// 	ref: 'User', // Which model to link
+// 	localField: 'name', // which field linked in Team
+// 	foreignField: 'team' // which field linked in User
+// });
 
 teamSchema.pre('save', function(next) {
 	if(!this.isModified('name')) { // If name is not modified skip slug generator

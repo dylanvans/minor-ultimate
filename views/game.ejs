@@ -11,12 +11,15 @@
 			</div>
 		</div>
 		<a href="#" class="button">Keep Score</a>
-		<!-- <div class="container-keep-score">
-			<label for="team1-score"><%= game.team_1.name %></label>
-			<input type="number" id="team1-score" value="<%=game.team_1_score%>">
-			<label for="team2-score"><%= game.team_2.name %></label>
-			<input type="number" id="team2-score" value="<%=game.team_2_score%>">
-		</div> -->
+		<div class="container-keep-score">
+			<form action="/game/<%= game.id %>/update-score" method="POST">
+				<label for="team1-score"><%= game.team_1.short_name %></label>
+				<input type="number" id="team1-score" min="0" max="25" name="team1Score" value="<%=game.team_1_score%>">
+				<label for="team2-score"><%= game.team_2.short_name %></label>
+				<input type="number" id="team2-score" min="0" max="25" name="team2Score" value="<%=game.team_2_score%>">
+				<button type="submit">Update Score</button>
+			</form>
+		</div>
 	</section>
 	<section>
 		<h2>Previous Scores</h2>

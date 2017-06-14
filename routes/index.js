@@ -25,5 +25,6 @@ router.post('/register',
 router.get('/success', loginController.onSuccess);
 
 router.get('/game/:id', catchErrors(gameController.gamePage));
+router.post('/game/:id/update-score', catchErrors(gameController.updateScore));
 
 module.exports = router;

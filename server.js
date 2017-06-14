@@ -11,6 +11,7 @@ mongoose.connection.on('error', (err) => {
 // Import models
 require('./models/User');
 require('./models/Team');
+require('./models/LiveGame');
 
 // Require
 const path = require('path');
@@ -24,15 +25,20 @@ const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const routes = require('./routes/index');
-const sockets = require('./sockets');
+const leaguevineHandler = require('./handlers/leaguevine');
+const { catchErrors } = require('./handlers/errorHandlers');
 require('./handlers/passport');
-require('./handlers/leaguevine');
+
+leaguevineHandler.updateTeams();
+catchErrors(leaguevineHandler.setLiveGames());
+setTimeout(() => {
+	leaguevineHandler.setLiveGames();
+}, 120000);
 
 // Config
 const app = express();
 
 http = http.createServer(app);
-sockets.socketServer(app, http);
 app.use(compression());
 
 app.set('view engine', 'ejs');

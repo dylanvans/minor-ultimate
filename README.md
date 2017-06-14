@@ -66,13 +66,17 @@ npm start
 ```
 
 ## Dev options
+Start nodemon and watch CSS and JS
+```
+npm run start:dev
+```
 Lint
 ```
 npm run lint 
 ```
 
 ## Tech
-[NodeJS](https://nodejs.org/en/) + [Express](https://expressjs.com/) + [EJS](https://www.npmjs.com/package/ejs) + [mongoDB](https://www.mongodb.com/)
+[NodeJS](https://nodejs.org/en/) + [Express](https://expressjs.com/) + [EJS](https://www.npmjs.com/package/ejs) + [mongoDB](https://www.mongodb.com/) + [Leaguevine API](https://www.leaguevine.com/)
 
 ### Other
 - [Moment.js](https://momentjs.com/)

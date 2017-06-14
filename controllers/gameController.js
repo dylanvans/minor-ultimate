@@ -14,7 +14,6 @@ exports.gamePage = async (req, res) => {
 
 	const game = await rp(getGameOptions)
 		.then(data => {
-			console.log(data)
 			return data;
 		})
 	    .catch(err => {
@@ -25,4 +24,32 @@ exports.gamePage = async (req, res) => {
 		title: 'Game',
 		game
 	});
+}
+
+exports.updateScore = async (req, res) => {
+	const updateScoreOptions = {
+		method: 'POST',
+	    uri: `http://api.playwithlv.com/v1/game_scores/`,
+	    headers: {
+			Authorization: `bearer ${universalAccessToken}`
+	    },
+	    body: {
+	    	game_id: req.params.id,
+			team_1_score: req.body.team1Score,
+			team_2_score: req.body.team2Score,
+			is_final: false
+	    },
+	    json: true
+	};
+
+	const game = await rp(updateScoreOptions)
+		.then(data => {
+			console.log(data)
+			return data;
+		})
+	    .catch(err => {
+			console.log(`Oops API call failed: ${err}`)
+	    });
+
+	res.redirect(req.get('referer'));
 }

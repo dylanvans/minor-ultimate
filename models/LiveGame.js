@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const slug = require('slugs');
 
-const gameSchema = new mongoose.Schema({
+const liveGameSchema = new mongoose.Schema({
 	gameId: String,
 	team1: {
 		type: mongoose.Schema.ObjectId,
@@ -15,15 +15,12 @@ const gameSchema = new mongoose.Schema({
 	team1Score: Number,
 	team2Score: Number,
 	slug: String,
-	live: Boolean,
-	startTime: {
-		type: Date
-	},
-	leagueVineId: String,
-	swissRoundId: String
+	startTime: String,
+	swissRoundId: String,
+	field: String
 });
 
-gameSchema.pre('save', function(next) {
+liveGameSchema.pre('save', function(next) {
 	if(!this.isModified('gameId')) { // If name is not modified skip slug generator
 		next();
 		return;
@@ -32,4 +29,4 @@ gameSchema.pre('save', function(next) {
 	next();
 })
 
-module.exports = mongoose.model('Game', gameSchema)
+module.exports = mongoose.model('LiveGame', liveGameSchema)

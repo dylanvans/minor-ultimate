@@ -3,28 +3,28 @@
 	<section class="dark-section">
 		<div class="container">
 			<h2>Live Games</h2>
-			<% games.forEach(game => { %>
-				<a class="container-game" href="game/<%= game.id %>">
+			<% liveGames.forEach(game => { %>
+				<a class="container-game" href="game/<%= game.gameId %>">
 					<div class="game-team game-team-1">
-						<p><%= game.team_1.short_name %></p>
+						<p><%= game.team1.shortName %></p>
 					</div>
 					<div class="game-score">
 						<div>
-							<p><%= game.team_1_score %></p>
+							<p><%= game.team1Score %></p>
 						</div>
 						<div>
 							<p> - </p>
 						</div>
 						<div>
-							<p><%= game.team_2_score %></p>
+							<p><%= game.team2Score %></p>
 						</div>
 					</div>
 					<div class="game-team game-team-2">
-						<p><%= game.team_2.short_name %></p>
+						<p><%= game.team2.shortName %></p>
 					</div>
 				</a>
 			<% }) %>
-			<% if(!games) { %>
+			<% if(!liveGames) { %>
 				<p>There are no live games at the moment</p>
 			<% } %>
 		</div>
