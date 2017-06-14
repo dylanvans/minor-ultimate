@@ -15,6 +15,7 @@ const momentFormat = 'YYYY-MM-DDTHH:mm:ss+02:00'; // TO DO timezone  still hardc
 
 exports.setLiveGames = async () => {
     console.log('setting live games');
+    
     const currentTime = moment().format(momentFormat);
 
     const getGamesOptions = {
