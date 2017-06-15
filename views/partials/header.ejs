@@ -7,6 +7,16 @@
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+	<% if(flashes) { 
+	const arrayCategories = Object.keys(flashes);
+		arrayCategories.forEach(cat => {
+			flashes[cat].forEach(message => { %>
+			<div class="container-flash-message flash-<%= cat %>">
+				<p class="flash-text"><%= message %></p>
+			</div>
+		<% 	});
+		}); %>
+	<% } %>
 	<header>
 		<nav class="navbar">
 			<div class="navbar-account-list">
@@ -46,14 +56,4 @@
 			</ul>
 		</nav>
 	</header>
-	<% if(flashes) { 
-	const arrayCategories = Object.keys(flashes);
-		arrayCategories.forEach(cat => {
-			flashes[cat].forEach(message => { %>
-			<div class="container-flash-message flash-<%= cat %>">
-				<p class="flash-text"><%= message %></p>
-			</div>
-		<% 	});
-		}); %>
-	<% } %>
 	<main>

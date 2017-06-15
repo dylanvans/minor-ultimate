@@ -1,6 +1,6 @@
 <% include partials/header.ejs %>
 <div class="container">
-	<% if(liveGames) { %>
+	<% if(liveGames.length) { %>
 	<section class="dark-section">
 		<div class="container">
 			<h2>Live Games</h2>
@@ -30,6 +30,7 @@
 	<%} else { %>
 	<section class="dark-section">
 		<div class="container">
+			<h2>Live Games</h2>
 			<p>There are no live games at the moment</p>
 		</div>
 	</section>

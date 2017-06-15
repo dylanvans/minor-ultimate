@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Team = mongoose.model('Team');
+const ToDo = mongoose.model('ToDo');
 const moment = require('moment');
 const rp = require('request-promise');
 require('dotenv').config();
@@ -13,6 +14,8 @@ const momentFormat = 'YYYY-MM-DDTHH:mm:ss+Z';
 exports.myTeam = async (req, res) => {
 	const currentTime = moment().format(momentFormat);
 	const team = await Team.findById(req.user.team);
+	team.toDo = await ToDo.find({team: team._id});
+
 	let games;
 
 	const teamsFromTournamentOptions = {
@@ -54,6 +57,6 @@ exports.myTeam = async (req, res) => {
 
 	res.render('myTeam', {
 		title: 'My Team',
-		team,
+		team
 	});
 }

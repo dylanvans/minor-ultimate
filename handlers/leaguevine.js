@@ -1,6 +1,7 @@
 const rp = require('request-promise');
 const mongoose = require('mongoose');
 const Team = mongoose.model('Team');
+const ToDo = mongoose.model('ToDo');
 const LiveGame = mongoose.model('LiveGame');
 const dotenv = require('dotenv');
 const moment = require('moment');
@@ -17,6 +18,8 @@ exports.setLiveGames = async () => {
     console.log('setting live games');
     
     const currentTime = moment().format(momentFormat);
+
+    await LiveGame.remove({}, () => {});
 
     const getGamesOptions = {
         uri: 'http://api.playwithlv.com/v1/games/',
@@ -57,24 +60,43 @@ exports.setLiveGames = async () => {
                     field: liveGames[i].game_site.name
                 }
 
-                LiveGame.updateOne({ gameId: liveGames[i].id }, {$set: {
-                        gameId: liveGames[i].id,
-                        team1: team1Id,
-                        team2: team2Id,
-                        team1Score: liveGames[i].team_1_score,
-                        team2Score: liveGames[i].team_2_score,
-                        startTime: liveGames[i].start_time,
-                        swissRoundId: liveGames[i].swiss_round_id,
-                        field: liveGames[i].game_site.name
-                    }
-                }, {upsert: true}, () => {
+                setTodo(gameFormatted);
 
-                });
+                const lg = (new LiveGame(gameFormatted)).save(() => {});
             }
         })
         .catch(err => {
             console.log(`Oops API call failed: ${err}`)
         });
+
+    function setTodo(game) {
+        for (var i = 0; i < 2; i++) {
+            const team = (i + 1 == 1 ? game.team1 : game.team2);
+            const opponent = (i + 1 == 1 ? game.team2 : game.team1);
+
+            const spiritTodo = {
+                team: team,
+                opponent: opponent,
+                text: `Please submit your <span>spirit points</span> for the match against <span>${opponent.name}</span>`,
+                game: game.gameId,
+                todoType: 'spirit',
+                status: 'todo'
+            }
+
+            // const scoreTodo = {
+            //     team: i++ == 1 ? game.team1 : game.team2
+            //     text:`Please submit your final score for the match against ${i++ == 1 ? game.team2.name : game.team1.name}`
+            //     todoType: score
+            //     status:
+            // }
+
+            ToDo.findOneAndUpdate({ 
+                team: spiritTodo.team,
+                opponent: spiritTodo.opponent,
+                todoType: spiritTodo.todoType
+            }, spiritTodo, {upsert: true}, () => {});
+        }
+    }
 }
 
 exports.updateTeams = () => {
@@ -127,9 +149,7 @@ exports.updateTeams = () => {
             });
 
             teamsFormatted.forEach(team => {
-                Team.findOneAndUpdate({ name: team.name }, team, {upsert: true}, () => {
-
-                });
+                Team.findOneAndUpdate({ name: team.name }, team, {upsert: true}, () => {});
             });
         })
         .catch(err => {

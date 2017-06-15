@@ -1,4 +1,5 @@
 const rp = require('request-promise');
+const leaguevineHandler = require('../handlers/leaguevine');
 require('dotenv').config();
 
 const universalAccessToken = process.env.UNIVERSALACCESSTOKEN;
@@ -45,6 +46,7 @@ exports.updateScore = async (req, res) => {
 	const game = await rp(updateScoreOptions)
 		.then(data => {
 			console.log(data)
+			leaguevineHandler.setLiveGames()
 			return data;
 		})
 	    .catch(err => {

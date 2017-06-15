@@ -12,6 +12,7 @@ mongoose.connection.on('error', (err) => {
 require('./models/User');
 require('./models/Team');
 require('./models/LiveGame');
+require('./models/ToDo');
 
 // Require
 const path = require('path');
@@ -31,8 +32,8 @@ require('./handlers/passport');
 
 leaguevineHandler.updateTeams();
 catchErrors(leaguevineHandler.setLiveGames());
-setTimeout(() => {
-	leaguevineHandler.setLiveGames();
+setInterval(() => {
+	catchErrors(leaguevineHandler.setLiveGames());
 }, 120000);
 
 const app = express();

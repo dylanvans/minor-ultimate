@@ -1,15 +1,44 @@
 <% include partials/header.ejs %>
 <div class="container">
+	<header class="header-my-team">
+		<h2><%= team.name %></h2>
+	</header>
+	<% if(team.toDo.length) { %>
+	<section>
+		<h2>To Do</h2>
+		<% team.toDo.forEach(toDo => { %>
+			<div class="container-todo">
+				<p><%- toDo.text %></p>
+				<a class="button" href="/spirit-points/<%= toDo.game %>">GO</a>
+			</div>
+		<% }) %>
+	</section>
+	<% } else { %>
 	<section>
 		<h2>To Do</h2>
 		<p>Nice job! All scores and spirit points are submitted!</p>
 	</section>
+	<% } %>
 	<% if(team.liveGames.length) { %>
 	<section class="dark-section">
 		<h2>Live Game</h2>
 		<% team.liveGames.forEach(game => { %>
-			<a class="container-game" href="game/<%= game.id %>">
-				<div class="game-team game-team-1">
+			<div class="container-team-live">
+				<div class="team-live-teams">
+					<div class="container-live-team1">
+						<p class="live-team-name"><%= game.team_1.short_name %></p>
+						<p class="live-score"><%= game.team_1_score %></p>
+					</div>
+					<div>
+						<p class="live-score"> - </p>
+					</div>
+					<div class="container-live-team1">
+						<p class="live-team-name"><%= game.team_2.short_name %></p>
+						<p class="live-score"><%= game.team_2_score %></p>
+					</div>
+				</div>
+				<a href="game/<%= game.id %>" class="button">Keep Score</a>
+				<!-- <div class="game-team game-team-1">
 					<p><%= game.team_1.short_name %></p>
 				</div>
 				<div class="game-score">
@@ -25,8 +54,8 @@
 				</div>
 				<div class="game-team game-team-2">
 					<p><%= game.team_2.short_name %></p>
-				</div>
-			</a>
+				</div> -->
+			</div>
 		<% }) %>
 	</section>
 	<% } %>
