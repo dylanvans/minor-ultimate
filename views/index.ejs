@@ -1,30 +1,38 @@
 <% include partials/header.ejs %>
 <div class="container">
 	<% if(liveGames.length) { %>
-	<section class="dark-section">
+	<section class="dark-section collapsible-content">
 		<div class="container">
 			<h2>Live Games</h2>
 			<% liveGames.forEach(game => { %>
-				<a class="container-game" href="game/<%= game.gameId %>">
-					<div class="game-team game-team-1">
-						<p><%= game.team1.shortName %></p>
+				<a class="game-block container-live-game" href="game/<%= game.gameId %>">
+					<div class="container-game-info">
+						<p><%= game.startTime %> @ <%- game.field%></p>
 					</div>
-					<div class="game-score">
-						<div>
-							<p><%= game.team1Score %></p>
+					<div class="container-game">
+						<div class="game-team game-team-1">
+							<p><%= game.team1.shortName %></p>
 						</div>
-						<div>
-							<p> - </p>
+						<div class="game-score">
+							<div>
+								<p><%= game.team1Score %></p>
+							</div>
+							<div>
+								<p> - </p>
+							</div>
+							<div>
+								<p><%= game.team2Score %></p>
+							</div>
 						</div>
-						<div>
-							<p><%= game.team2Score %></p>
+						<div class="game-team game-team-2">
+							<p><%= game.team2.shortName %></p>
 						</div>
-					</div>
-					<div class="game-team game-team-2">
-						<p><%= game.team2.shortName %></p>
 					</div>
 				</a>
 			<% }) %>
+		</div>
+		<div class="collapse-control">
+			<img src="/img/icon-more.png" alt="more icon">
 		</div>
 	</section>
 	<%} else { %>

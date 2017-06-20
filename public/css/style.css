@@ -191,17 +191,25 @@ h1, h2, h3, h4 {
 .dark-section h1, .dark-section h2 {
   color: #FFFFFF; }
 
-.container-game {
+.game-block {
   text-decoration: none;
-  padding: 0.97em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 0.97em;
   background-color: #2CAAE1;
   color: white;
   border-radius: 5px;
   font-family: source_sans_prolight; }
+
+.game-block > div {
+  display: flex;
+  padding: 0.97em; }
+
+.game-block > .container-button {
+  padding-top: 0; }
+
+.container-game {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
 
 .container-game p, .container-upcoming-game p {
   margin: 0;
@@ -240,16 +248,15 @@ h1, h2, h3, h4 {
   width: calc(100%/3); }
 
 .container-upcoming-game {
-  padding: 0.97em;
   margin-bottom: 0.97em;
   background-color: #2CAAE1;
   color: white;
   border-radius: 5px;
-  font-family: source_sans_prolight; }
+  font-family: 'catorze27_bold', sans-serif; }
 
 .container-game-teams {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.4em; }
 
@@ -257,13 +264,15 @@ h1, h2, h3, h4 {
   margin: 0.485em; }
 
 .container-game-info {
+  background-color: #268ebb;
+  border-radius: 5px 5px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center; }
 
 .container-game-info p {
   text-transform: none;
-  font-size: 1.7em;
+  font-size: 1.2em;
   font-family: 'catorze27_bold', sans-serif; }
 
 .game-info {
@@ -271,6 +280,14 @@ h1, h2, h3, h4 {
   flex-direction: column;
   align-items: center;
   margin: 0.97em; }
+
+.container-live-game {
+  display: flex;
+  flex-direction: column;
+  background-color: #2CAAE1;
+  color: #0B6E99;
+  text-transform: uppercase;
+  border-radius: 5px; }
 
 .container-todo {
   text-decoration: none;
@@ -320,9 +337,9 @@ h1, h2, h3, h4 {
 .header-my-team h2 {
   color: #2CAAE1;
   margin: 0;
-  box-shadow: inset 0 -0.15em 0 0 #FFD999; }
+  box-shadow: inset 0 -0.1em 0 0 #FFD999; }
 
-.center, .header-my-team, .team-live-teams div, .container-checkboxes label {
+.center, .header-my-team, .team-live-teams div, .container-checkboxes label, .collapse-control, .container-number-input {
   display: flex;
   align-items: center;
   justify-content: center; }
@@ -342,7 +359,6 @@ h1, h2, h3, h4 {
   flex-direction: column;
   background-color: #2CAAE1;
   color: #0B6E99;
-  padding: 0.97em;
   text-transform: uppercase;
   border-radius: 5px; }
 
@@ -364,6 +380,9 @@ h1, h2, h3, h4 {
 .team-live-teams .live-score {
   font-size: 3.2em; }
 
+.section-spirit {
+  color: #0B6E99; }
+
 .container-checkboxes {
   display: flex; }
 
@@ -371,6 +390,7 @@ h1, h2, h3, h4 {
   margin-right: 0.194em; }
 
 .container-checkboxes label {
+  color: #FFFFFF;
   transition: background-color .15s ease-in-out;
   background-color: #2CAAE1;
   padding: 0.97em 1.455em; }
@@ -395,6 +415,49 @@ h1, h2, h3, h4 {
 
 .container-flash-message p {
   margin: 0; }
+
+.collapsible-content {
+  box-sizing: border-box;
+  position: relative;
+  max-height: 300px;
+  overflow: hidden;
+  transition: all .5s ease-in-out;
+  will-change: max-height; }
+
+.collapsible-active {
+  max-height: 1250px; }
+
+.collapsible-active .collapse-control img {
+  will-change: transform;
+  transform: rotate(180deg); }
+  .collapsible-active .collapse-control img:hover {
+    cursor: pointer; }
+
+.collapse-control {
+  width: 100%;
+  height: 4em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom, transparent, #0B6E99); }
+
+.collapse-control img {
+  transition: all .2s ease-in-out;
+  height: 2em; }
+
+.container-number-input {
+  flex-direction: column; }
+
+.number-arrow {
+  width: 30px;
+  padding: 0.485em; }
+
+.container-number-input input {
+  background-color: inherit;
+  color: #FFFFFF;
+  padding: 0 0.97em;
+  font-family: 'catorze27_bold', sans-serif;
+  font-size: 3em; }
 
 @media only screen and (min-width: 768px) {
   .navbar {

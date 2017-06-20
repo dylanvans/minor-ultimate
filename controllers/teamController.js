@@ -14,7 +14,7 @@ const momentFormat = 'YYYY-MM-DDTHH:mm:ss+Z';
 exports.myTeam = async (req, res) => {
 	const currentTime = moment().format(momentFormat);
 	const team = await Team.findById(req.user.team);
-	team.toDo = await ToDo.find({team: team._id});
+	team.toDo = await ToDo.find({team: team._id, status: 'todo'});
 
 	let games;
 
@@ -45,7 +45,8 @@ exports.myTeam = async (req, res) => {
 	    	const startDate = moment(game.start_time, momentFormat);
 			const endDate = moment(startDate, momentFormat).add(90, 'm'); // TO DO 90 minutes still hardcoded
 			const startHour = moment(game.start_time, momentFormat).get('hour');
-			const startMinute = moment(game.start_time, momentFormat).get('minute');
+			let startMinute = moment(game.start_time, momentFormat).get('minute');
+			startMinute = startMinute < 10 ? `0${startMinute}`: startMinute;
 			game.startTime = `${startHour}:${startMinute}`;
 
  

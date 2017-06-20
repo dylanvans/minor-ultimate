@@ -28,6 +28,7 @@ router.get('/success', loginController.onSuccess);
 router.get('/game/:id', catchErrors(gameController.gamePage));
 router.post('/game/:id/update-score', catchErrors(gameController.updateScore));
 
-router.get('/spirit-points/:id', todoController.spiritPoints);
+router.get('/spirit-points/:id', loginController.isLoggedIn, catchErrors(todoController.spiritPoints));
+router.post('/spirit-points/:id', loginController.isLoggedIn, catchErrors(todoController.submitPoints));
 
 module.exports = router;

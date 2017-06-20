@@ -15,6 +15,7 @@ const liveGameSchema = new mongoose.Schema({
 	team1Score: Number,
 	team2Score: Number,
 	slug: String,
+	startDate: String,
 	startTime: String,
 	swissRoundId: String,
 	field: String

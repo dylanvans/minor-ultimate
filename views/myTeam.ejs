@@ -9,7 +9,7 @@
 		<% team.toDo.forEach(toDo => { %>
 			<div class="container-todo">
 				<p><%- toDo.text %></p>
-				<a class="button" href="/spirit-points/<%= toDo.game %>">GO</a>
+				<a class="button" href="/spirit-points/<%= toDo._id %>">GO</a>
 			</div>
 		<% }) %>
 	</section>
@@ -23,7 +23,10 @@
 	<section class="dark-section">
 		<h2>Live Game</h2>
 		<% team.liveGames.forEach(game => { %>
-			<div class="container-team-live">
+			<div class="container-team-live game-block">
+				<div class="container-game-info">
+					<p><%= game.startTime %> @ <%= game.game_site.name %></p>
+				</div>
 				<div class="team-live-teams">
 					<div class="container-live-team1">
 						<p class="live-team-name"><%= game.team_1.short_name %></p>
@@ -37,24 +40,9 @@
 						<p class="live-score"><%= game.team_2_score %></p>
 					</div>
 				</div>
-				<a href="game/<%= game.id %>" class="button">Keep Score</a>
-				<!-- <div class="game-team game-team-1">
-					<p><%= game.team_1.short_name %></p>
+				<div class="container-button">
+					<a href="game/<%= game.id %>" class="button">Keep Score</a>
 				</div>
-				<div class="game-score">
-					<div>
-						<p><%= game.team_1_score %></p>
-					</div>
-					<div>
-						<p> - </p>
-					</div>
-					<div>
-						<p><%= game.team_2_score %></p>
-					</div>
-				</div>
-				<div class="game-team game-team-2">
-					<p><%= game.team_2.short_name %></p>
-				</div> -->
 			</div>
 		<% }) %>
 	</section>
@@ -63,7 +51,10 @@
 	<section class="dark-section">
 		<h2>Next Game</h2>
 		<% team.upcomingGames.forEach(game => { %>
-			<div class="container-upcoming-game">
+			<div class="container-upcoming-game game-block">
+				<div class="container-game-info">
+					<p><%= game.startTime %> @ <%= game.game_site.name %></p>
+				</div>
 				<div class="container-game-teams">
 					<div class="game-team game-team-1">
 						<p><%= game.team_1.short_name %></p>
@@ -73,11 +64,7 @@
 						<p><%= game.team_2.short_name %></p>
 					</div>
 				</div>
-				<div class="container-game-info">
-					<div class="game-info">
-						<p><%= game.startTime %></p>
-						<p><%- game.game_site.name%></p>
-					</div>
+				<div class="container-button">
 					<a href="game/<%= game.id %>" class="button">Keep Score</a>
 				</div>
 			</div>
@@ -89,7 +76,7 @@
 	<section>
 		<h2>Results</h2>
 		<% team.finishedGames.forEach(game => { %>
-			<a class="container-game" href="game/<%= game.id %>">
+			<a class="container-game game-block" href="game/<%= game.id %>">
 				<div class="game-team game-team-1">
 					<p><%= game.team_1.short_name %></p>
 				</div>

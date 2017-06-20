@@ -49,13 +49,19 @@ exports.setLiveGames = async () => {
                 const team1Id = await Team.findOne({"leaguevineId": liveGames[i].team_1_id });
                 const team2Id = await Team.findOne({"leaguevineId": liveGames[i].team_2_id });
 
+                const startHour = moment(liveGames[i].start_time, momentFormat).get('hour');
+                let startMinute = moment(liveGames[i].start_time, momentFormat).get('minute');
+                startMinute = startMinute < 10 ? `0${startMinute}`: startMinute;
+                const startTime = `${startHour}:${startMinute}`;
+
                 const gameFormatted = {
                     gameId: liveGames[i].id,
                     team1: team1Id,
                     team2: team2Id,
                     team1Score: liveGames[i].team_1_score,
                     team2Score: liveGames[i].team_2_score,
-                    startTime: liveGames[i].start_time,
+                    startDate: liveGames[i].start_time,
+                    startTime: startTime,
                     swissRoundId: liveGames[i].swiss_round_id,
                     field: liveGames[i].game_site.name
                 }
