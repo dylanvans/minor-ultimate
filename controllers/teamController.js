@@ -42,13 +42,17 @@ exports.myTeam = async (req, res) => {
 	    team.finishedGames = [];
 
 	    games.forEach(game => {
-	    	const startTime = moment(game.start_time, momentFormat);
-			const endTime = moment(startTime, momentFormat).add(90, 'm'); // TO DO 90 minutes still hardcoded
+	    	const startDate = moment(game.start_time, momentFormat);
+			const endDate = moment(startDate, momentFormat).add(90, 'm'); // TO DO 90 minutes still hardcoded
+			const startHour = moment(game.start_time, momentFormat).get('hour');
+			const startMinute = moment(game.start_time, momentFormat).get('minute');
+			game.startTime = `${startHour}:${startMinute}`;
+
  
  			// To DO get live game from DB instead of calculation
-			if (moment(currentTime, momentFormat).isBefore(moment(startTime, momentFormat))) {
+			if (moment(currentTime, momentFormat).isBefore(moment(startDate, momentFormat))) {
 				team.upcomingGames.push(game)
-			} else if (moment(currentTime, momentFormat).isBetween(moment(startTime), moment(endTime))) {
+			} else if (moment(currentTime, momentFormat).isBetween(moment(startDate), moment(endDate))) {
 				team.liveGames.push(game)
 			} else {
 				team.finishedGames.push(game)

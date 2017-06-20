@@ -63,25 +63,25 @@
 	<section class="dark-section">
 		<h2>Next Game</h2>
 		<% team.upcomingGames.forEach(game => { %>
-			<a class="container-game" href="game/<%= game.id %>">
-				<div class="game-team game-team-1">
-					<p><%= game.team_1.short_name %></p>
-				</div>
-				<div class="game-score">
-					<div>
-						<p><%= game.team_1_score %></p>
+			<div class="container-upcoming-game">
+				<div class="container-game-teams">
+					<div class="game-team game-team-1">
+						<p><%= game.team_1.short_name %></p>
 					</div>
-					<div>
-						<p> - </p>
-					</div>
-					<div>
-						<p><%= game.team_2_score %></p>
+					<p>-</p>
+					<div class="game-team game-team-2">
+						<p><%= game.team_2.short_name %></p>
 					</div>
 				</div>
-				<div class="game-team game-team-2">
-					<p><%= game.team_2.short_name %></p>
+				<div class="container-game-info">
+					<div class="game-info">
+						<p><%= game.startTime %></p>
+						<p><%- game.game_site.name%></p>
+					</div>
+					<a href="game/<%= game.id %>" class="button">Keep Score</a>
 				</div>
-			</a>
+			</div>
+			
 		<% }) %>
 	</section>
 	<% } %>

@@ -145,7 +145,8 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  transition: all .2s ease-in-out; }
   .navbar-list li a:hover {
     background-color: #FF9E00; }
 
@@ -202,7 +203,7 @@ h1, h2, h3, h4 {
   border-radius: 5px;
   font-family: source_sans_prolight; }
 
-.container-game p {
+.container-game p, .container-upcoming-game p {
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.078em; }
@@ -237,6 +238,39 @@ h1, h2, h3, h4 {
   justify-content: center;
   align-items: center;
   width: calc(100%/3); }
+
+.container-upcoming-game {
+  padding: 0.97em;
+  margin-bottom: 0.97em;
+  background-color: #2CAAE1;
+  color: white;
+  border-radius: 5px;
+  font-family: source_sans_prolight; }
+
+.container-game-teams {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.4em; }
+
+.container-game-teams .game-team {
+  margin: 0.485em; }
+
+.container-game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.container-game-info p {
+  text-transform: none;
+  font-size: 1.7em;
+  font-family: 'catorze27_bold', sans-serif; }
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.97em; }
 
 .container-todo {
   text-decoration: none;
@@ -286,12 +320,22 @@ h1, h2, h3, h4 {
 .header-my-team h2 {
   color: #2CAAE1;
   margin: 0;
-  box-shadow: inset 0 -3px 0 0 #FFD999; }
+  box-shadow: inset 0 -0.15em 0 0 #FFD999; }
 
-.center, .header-my-team, .team-live-teams div {
+.center, .header-my-team, .team-live-teams div, .container-checkboxes label {
   display: flex;
   align-items: center;
   justify-content: center; }
+
+.visuallyhidden, .container-checkboxes input[type="radio"] {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0; }
 
 .container-team-live {
   display: flex;
@@ -319,6 +363,20 @@ h1, h2, h3, h4 {
 
 .team-live-teams .live-score {
   font-size: 3.2em; }
+
+.container-checkboxes {
+  display: flex; }
+
+.container-checkboxes > div {
+  margin-right: 0.194em; }
+
+.container-checkboxes label {
+  transition: background-color .15s ease-in-out;
+  background-color: #2CAAE1;
+  padding: 0.97em 1.455em; }
+
+.container-checkboxes input[type="radio"]:checked + label {
+  background-color: #FF9E00; }
 
 .container-flash-message {
   box-sizing: border-box;

@@ -3,6 +3,7 @@ const homeController = require('../controllers/homeController');
 const teamController = require('../controllers/teamController');
 const userController = require('../controllers/userController');
 const loginController = require('../controllers/loginController');
+const todoController = require('../controllers/todoController');
 const gameController = require('../controllers/gameController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
@@ -26,5 +27,7 @@ router.get('/success', loginController.onSuccess);
 
 router.get('/game/:id', catchErrors(gameController.gamePage));
 router.post('/game/:id/update-score', catchErrors(gameController.updateScore));
+
+router.get('/spirit-points/:id', todoController.spiritPoints);
 
 module.exports = router;

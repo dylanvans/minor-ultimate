@@ -1,0 +1,134 @@
+<% include partials/header.ejs %>
+	<section class="dark-section">
+		<h1 class="main-heading"><%= title %></h1>
+		<p>Game against:</p>
+		<form action="/spirit-points/" method="POST" class="form-spirit">
+			<fieldset>
+				<legend>Rules Knowledge and Use</legend>
+				<div class="container-checkboxes">
+					<div>
+						<input type="radio" id="rule-0" name="rule-knowledge" value="0">
+						<label for="rule-0">0</label>
+					</div>
+					<div>
+						<input type="radio" id="rule-1" name="rule-knowledge" value="1">
+						<label for="rule-1">1</label>
+					</div>
+					<div>
+						<input type="radio" id="rule-2" name="rule-knowledge" value="2">
+						<label for="rule-2">2</label>
+					</div>
+					<div>
+						<input type="radio" id="rule-3" name="rule-knowledge" value="3">
+						<label for="rule-3">3</label>
+					</div>
+					<div>
+						<input type="radio" id="rule-4" name="rule-knowledge" value="4">
+						<label for="rule-4">4</label>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Fouls and Body Contact</legend>
+				<div class="container-checkboxes">
+					<div>
+						<input type="radio" id="fouls-0" name="fouls" value="0">
+						<label for="fouls-0">0</label>
+					</div>
+					<div>
+						<input type="radio" id="fouls-1" name="fouls" value="1">
+						<label for="fouls-1">1</label>
+					</div>
+					<div>
+						<input type="radio" id="fouls-2" name="fouls" value="2">
+						<label for="fouls-2">2</label>
+					</div>
+					<div>
+						<input type="radio" id="fouls-3" name="fouls" value="3">
+						<label for="fouls-3">3</label>
+					</div>
+					<div>
+						<input type="radio" id="fouls-4" name="fouls" value="4">
+						<label for="fouls-4">4</label>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Fair-Mindedness</legend>
+				<div class="container-checkboxes">
+					<div>
+						<input type="radio" id="fair-0" name="fair-mindedness" value="0">
+						<label for="fair-0">0</label>
+					</div>
+					<div>
+						<input type="radio" id="fair-1" name="fair-mindedness" value="1">
+						<label for="fair-1">1</label>
+					</div>
+					<div>
+						<input type="radio" id="fair-2" name="fair-mindedness" value="2">
+						<label for="fair-2">2</label>
+					</div>
+					<div>
+						<input type="radio" id="fair-3" name="fair-mindedness" value="3">
+						<label for="fair-3">3</label>
+					</div>
+					<div>
+						<input type="radio" id="fair-4" name="fair-mindedness" value="4">
+						<label for="fair-4">4</label>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Positive Attitude and Self-Control</legend>
+				<div class="container-checkboxes">
+					<div>
+						<input type="radio" id="positive-0" name="positive-attitude" value="0">
+						<label for="positive-0">0</label>
+					</div>
+					<div>
+						<input type="radio" id="positive-1" name="positive-attitude" value="1">
+						<label for="positive-1">1</label>
+					</div>
+					<div>
+						<input type="radio" id="positive-2" name="positive-attitude" value="2">
+						<label for="positive-2">2</label>
+					</div>
+					<div>
+						<input type="radio" id="positive-3" name="positive-attitude" value="3">
+						<label for="positive-3">3</label>
+					</div>
+					<div>
+						<input type="radio" id="positive-4" name="positive-attitude" value="4">
+						<label for="positive-4">4</label>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Communication</legend>
+				<div class="container-checkboxes">
+					<div>
+						<input type="radio" id="communication-0" name="communication" value="0">
+						<label for="communication-0">0</label>
+					</div>
+					<div>
+						<input type="radio" id="communication-1" name="communication" value="1">
+						<label for="communication-1">1</label>
+					</div>
+					<div>
+						<input type="radio" id="communication-2" name="communication" value="2">
+						<label for="communication-2">2</label>
+					</div>
+					<div>
+						<input type="radio" id="communication-3" name="communication" value="3">
+						<label for="communication-3">3</label>
+					</div>
+					<div>
+						<input type="radio" id="communication-4" name="communication" value="4">
+						<label for="communication-4">4</label>
+					</div>
+				</div>
+			</fieldset>
+			<button type="submit">Submit points</button>
+		</form>
+	</section>
+<% include partials/footer.ejs %>
