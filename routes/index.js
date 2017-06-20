@@ -31,4 +31,6 @@ router.post('/game/:id/update-score', catchErrors(gameController.updateScore));
 router.get('/spirit-points/:id', loginController.isLoggedIn, catchErrors(todoController.spiritPoints));
 router.post('/spirit-points/:id', loginController.isLoggedIn, catchErrors(todoController.submitPoints));
 
+router.get('/team/:name', catchErrors(teamController.teamPage));
+
 module.exports = router;

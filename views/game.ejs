@@ -3,7 +3,7 @@
 		<form action="/game/<%= game.id %>/update-score" method="POST">
 			<div class="container-score">
 				<div class="score-team">
-					<label for="team1-score" class="score-team-name"><%= game.team_1.short_name %></label>
+					<label for="team1-score" class="score-team-name"><a href="/team/<%= game.team1Slug %>"><%= game.team_1.short_name %></a></label>
 					<div class="container-number-input">
 						<img src="/img/icon-arrow-up.png" class="number-arrow number-arrow-up" alt="score up icon">
 						<input type="number" id="team1-score" min="0" max="25" name="team1Score" value="<%=game.team_1_score%>">
@@ -11,7 +11,7 @@
 					</div>
 				</div>
 				<div class="score-team">
-					<label for="team2-score" class="score-team-name"><%= game.team_2.short_name %></label>
+					<label for="team2-score" class="score-team-name"><a href="/team/<%= game.team2Slug %>"><%= game.team_2.short_name %></a></label>
 					<div class="container-number-input">
 						<img src="/img/icon-arrow-up.png" class="number-arrow number-arrow-up" alt="score up icon">
 						<input type="number" id="team2-score" min="0" max="25" name="team2Score" value="<%=game.team_2_score%>">

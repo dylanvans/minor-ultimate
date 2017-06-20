@@ -19,7 +19,10 @@ const userSchema = new Schema({
 	team: {
 		type: mongoose.Schema.ObjectId,
 		ref: 'Team'
-	}
+	},
+	favoriteTeams: [
+		{ type: mongoose.Schema.ObjectId, ref: 'Team' }
+	]
 });
 
 userSchema.plugin(passwordLocalMongoose, { usernameField: 'name' });

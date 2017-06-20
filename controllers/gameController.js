@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+const Team = mongoose.model('Team');
 const rp = require('request-promise');
 const leaguevineHandler = require('../handlers/leaguevine');
 require('dotenv').config();
@@ -20,6 +22,12 @@ exports.gamePage = async (req, res) => {
 	    .catch(err => {
 			console.log(`Oops API call failed: ${err}`)
 	    });
+
+	
+	const team1 = await Team.findOne({leaguevineId: game.team_1_id});
+	const team2 = await Team.findOne({leaguevineId: game.team_2_id});
+	game.team1Slug = team1.slug;
+	game.team2Slug = team2.slug;
 		
 	res.render('game', {
 		title: 'Game',
