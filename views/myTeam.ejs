@@ -3,10 +3,10 @@
 	<header class="header-my-team">
 		<h2><%= team.name %></h2>
 	</header>
-	<% if(team.toDo.length) { %>
+	<% if(team.todo.length) { %>
 	<section>
 		<h2>To Do</h2>
-		<% team.toDo.forEach(toDo => { %>
+		<% team.todo.forEach(toDo => { %>
 			<div class="container-todo">
 				<p><%- toDo.text %></p>
 				<a class="button" href="/spirit-points/<%= toDo._id %>">GO</a>

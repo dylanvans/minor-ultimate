@@ -15,7 +15,7 @@ main, footer {
 	position: relative;
 }
 
-section {
+.container > section, main > section {
 	padding: $margin;
 	box-shadow: $box-shadow;
 }
@@ -46,14 +46,13 @@ fieldset {
 	display: flex;
 }
 
-input {
+input, select {
 	box-sizing: border-box;
 	border: 0;
 	width: 100%;
 	font-family: inherit;
 	font-size: inherit;
 	padding: $margin*.5 $margin*.7;
-	border-radius: $border-radius;
 }
 
 .button {
@@ -133,6 +132,8 @@ h1, h2, h3, h4 {
 }
 
 .navbar-list li p {
+	font-size: .87em;
+	white-space: nowrap;
 	letter-spacing: $letter-spacing;
 	text-align: center;
 	margin: 0;
@@ -194,10 +195,47 @@ h1, h2, h3, h4 {
 }
 
 
-// Login / Register
+// Starred page
 // ===========
-.register-message {
+.container-starred-team {
+	border-radius: $border-radius;
+	display: flex;
+	flex-direction: column;
+	color: $main-white;
+	box-sizing: border-box;
+	text-decoration: none;
+	background-color: $main-blue;
+	margin-bottom: $margin;
+}
 
+.container-starred-team header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: $main-white;
+	border-radius: $border-radius $border-radius 0 0;
+	padding: $margin;
+	background-color: $main-blue-shadow;
+}
+
+.container-starred-team > section {
+	padding: $margin;
+}
+
+.header-starred-team button[name="star"] svg {
+	height: 2em;
+	width: 2em;
+}
+
+.container-starred-team h3 {
+	margin: 0;
+	letter-spacing: $letter-spacing*2;
+	text-transform: uppercase;
+	color: $main-white;
+}
+
+.container-starred-team p {
+	margin: 0;
 }
 
 
@@ -438,6 +476,22 @@ header h2 {
 
 // Team page
 // ===========
+.section-team-info > section {
+	margin: $margin 0;
+}
+
+.section-team-info > section:last-child {
+	margin-bottom: 0;
+}
+
+.section-team-info h3 {
+	margin: 0;
+}
+
+.section-team-info p {
+	margin: 0;
+}
+
 .header-team-page {
 	box-shadow: $box-shadow;
 	display: flex;
@@ -445,7 +499,7 @@ header h2 {
 	justify-content: space-between;
 }
 
-.header-team-page button[name="star"] svg {
+header button[name="star"] svg {
 	width: 3em;
 	height: 3em;
 }
@@ -486,21 +540,27 @@ header h2 {
 // ===========
 .container-flash-message {
 	box-sizing: border-box;
+	box-shadow: $box-shadow;
 	padding: $margin;
 	color: $main-black;
-	border-radius: $border-radius;
+	border-radius: 0 0 $border-radius $border-radius;
+	margin-left: $margin*.5;
+	margin-right: $margin*.5;
 }
 
 .container-flash-message.flash-info {
-	border-bottom: 3px solid $main-purple;
+	border: 3px solid $main-purple;
+	border-top: 0;
 }
 
 .container-flash-message.flash-error {
-	border-bottom: 3px solid $main-red;
+	border: 3px solid $main-red;
+	border-top: 0;
 }
 
 .container-flash-message.flash-success {
-	border-bottom: 3px solid $main-green;
+	border: 3px solid $main-green;
+	border-top: 0;
 }
 
 .container-flash-message p {
@@ -583,7 +643,7 @@ button[name="star"]:active {
 .container-number-input input {
 	background-color: inherit;
 	color: $main-white;
-	padding: 0 $margin;
+	padding: 0 $margin*.5;
 	font-family: 'catorze27_bold', sans-serif;
 	font-size: 3em;
 }

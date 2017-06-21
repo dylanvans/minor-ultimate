@@ -1,7 +1,31 @@
 <% include partials/header.ejs %>
 <div class="container">
-	<header>
-		<h1><%= title %></h1>
-	</header>
+	<% if(teams.length) { %>
+	<section>
+		<h1>Starred Teams</h1>
+		<div class="starred-teams">		
+			<% teams.forEach(team => { %>
+				<a href="/team/<%= team.slug %>" class="container-starred-team">
+					<header class="header-starred-team">
+						<h3><%= team.name %></h3>
+						<% if (user) { %>
+							<form action="/api/teams/<%= team._id %>/star" class="star-form" method="POST">
+								<%  const starString = user.stars.map(obj => obj.toString())
+									const starClass = starString.includes(team._id.toString()) ? 'star-active' : ''
+								%>
+								<button type="submit" name="star" class="<%= starClass %>">
+									<% include ../public/img/icon-fav.svg %>
+								</button>
+							</form>
+						<% } %>
+					</header>
+					<section>
+						<%- team.description %>
+					</section>
+				</a>
+			<% }); %>
+		</div>
+	</section>
+	<% } %>
 </div>
 <% include partials/footer.ejs %>

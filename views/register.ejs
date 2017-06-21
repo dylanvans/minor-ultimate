@@ -10,12 +10,11 @@
 				</fieldset>
 				<fieldset>
 					<label for="team">Team</label>
-					<input list="team" name="team">
-					<datalist id="team">
+					<select id="team" name="team">
 						<% teams.forEach(team => { %>
 							<option value="<%= team.id %>"> <%= team.name %> </option>
 						<% }); %>
-					</datalist>
+					</select>
 				</fieldset>
 				<fieldset>
 					<label for="password">Password</label>
@@ -24,7 +23,7 @@
 					<input type="password" id="password-confirm" name="password-confirm" required>
 				</fieldset>
 				
-				<button type="submit">Register</button>
+				<button type="submit" class="button">Register</button>
 			</form>
 		</div>
 	</section>

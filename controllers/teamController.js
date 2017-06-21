@@ -68,9 +68,11 @@ exports.teamPage = async (req, res) => {
 
 exports.myTeam = async (req, res) => {
 	const currentTime = moment().format(momentFormat);
-	const team = await Team.findById(req.user.team);
-	team.toDo = await ToDo.findOne({team: team._id, status: 'todo'});
-
+	const team = await Team.findById(req.user.team).populate('todo');
+	team.todo = team.todo.filter(obj => {
+		return obj.status == 'todo';
+	});
+	
 	let games;
 
 	const teamsFromTournamentOptions = {
@@ -132,8 +134,18 @@ exports.starTeam = async (req, res) => {
 		{ new: true }
 	);
 
-	res.json(user)
-	console.log('ja')
+	res.json(user);
+}
+
+exports.starPage = async (req, res) => {
+	const teams = await Team.find({
+		_id: { $in: req.user.stars }
+	});
+	
+	res.render('starred', {
+		title: 'Starred',
+		teams
+	});
 }
 
 

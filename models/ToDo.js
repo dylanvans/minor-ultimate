@@ -16,4 +16,8 @@ const toDoSchema = new mongoose.Schema({
 	status: String
 });
 
+toDoSchema.index({
+	status: 'text'
+});
+
 module.exports = mongoose.model('ToDo', toDoSchema)

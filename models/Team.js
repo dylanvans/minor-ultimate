@@ -31,12 +31,15 @@ const teamSchema = new mongoose.Schema({
 	}
 });
 
-// Links users to teams
-// teamSchema.virtual('members', {
-// 	ref: 'User', // Which model to link
-// 	localField: 'name', // which field linked in Team
-// 	foreignField: 'team' // which field linked in User
-// });
+teamSchema.index({
+	leaguevineId: 1
+});
+
+teamSchema.virtual('todo', {
+	ref: 'ToDo',
+	localField: '_id', // field on the user
+	foreignField: 'team' // field on the Team
+});
 
 teamSchema.pre('save', function(next) {
 	if(!this.isModified('name')) { // If name is not modified skip slug generator

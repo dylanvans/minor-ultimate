@@ -58,7 +58,7 @@ main, footer {
   box-sizing: border-box;
   position: relative; }
 
-section {
+.container > section, main > section {
   padding: 0.97em;
   box-shadow: 0 5px 5px -2px rgba(194, 194, 194, 0.5); }
 
@@ -80,14 +80,13 @@ fieldset {
   margin: 0.97em 0;
   display: flex; }
 
-input {
+input, select {
   box-sizing: border-box;
   border: 0;
   width: 100%;
   font-family: inherit;
   font-size: inherit;
-  padding: 0.485em 0.679em;
-  border-radius: 5px; }
+  padding: 0.485em 0.679em; }
 
 .button {
   text-decoration: none;
@@ -151,6 +150,8 @@ h1, h2, h3, h4 {
     background-color: #FF9E00; }
 
 .navbar-list li p {
+  font-size: .87em;
+  white-space: nowrap;
   letter-spacing: 0.078em;
   text-align: center;
   margin: 0;
@@ -197,6 +198,41 @@ h1, h2, h3, h4 {
 
 .dark-section h1, .dark-section h2 {
   color: #FFFFFF; }
+
+.container-starred-team {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  text-decoration: none;
+  background-color: #2CAAE1;
+  margin-bottom: 0.97em; }
+
+.container-starred-team header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #FFFFFF;
+  border-radius: 5px 5px 0 0;
+  padding: 0.97em;
+  background-color: #268ebb; }
+
+.container-starred-team > section {
+  padding: 0.97em; }
+
+.header-starred-team button[name="star"] svg {
+  height: 2em;
+  width: 2em; }
+
+.container-starred-team h3 {
+  margin: 0;
+  letter-spacing: 0.156em;
+  text-transform: uppercase;
+  color: #FFFFFF; }
+
+.container-starred-team p {
+  margin: 0; }
 
 .game-block {
   text-decoration: none;
@@ -387,13 +423,25 @@ header h2 {
 .team-live-teams .live-score {
   font-size: 3.2em; }
 
+.section-team-info > section {
+  margin: 0.97em 0; }
+
+.section-team-info > section:last-child {
+  margin-bottom: 0; }
+
+.section-team-info h3 {
+  margin: 0; }
+
+.section-team-info p {
+  margin: 0; }
+
 .header-team-page {
   box-shadow: 0 5px 5px -2px rgba(194, 194, 194, 0.5);
   display: flex;
   align-items: center;
   justify-content: space-between; }
 
-.header-team-page button[name="star"] svg {
+header button[name="star"] svg {
   width: 3em;
   height: 3em; }
 
@@ -417,18 +465,24 @@ header h2 {
 
 .container-flash-message {
   box-sizing: border-box;
+  box-shadow: 0 5px 5px -2px rgba(194, 194, 194, 0.5);
   padding: 0.97em;
   color: #434343;
-  border-radius: 5px; }
+  border-radius: 0 0 5px 5px;
+  margin-left: 0.485em;
+  margin-right: 0.485em; }
 
 .container-flash-message.flash-info {
-  border-bottom: 3px solid #D268E9; }
+  border: 3px solid #D268E9;
+  border-top: 0; }
 
 .container-flash-message.flash-error {
-  border-bottom: 3px solid #E55C86; }
+  border: 3px solid #E55C86;
+  border-top: 0; }
 
 .container-flash-message.flash-success {
-  border-bottom: 3px solid #5EE3AE; }
+  border: 3px solid #5EE3AE;
+  border-top: 0; }
 
 .container-flash-message p {
   margin: 0; }
@@ -487,7 +541,7 @@ button[name="star"]:active {
 .container-number-input input {
   background-color: inherit;
   color: #FFFFFF;
-  padding: 0 0.97em;
+  padding: 0 0.485em;
   font-family: 'catorze27_bold', sans-serif;
   font-size: 3em; }
 
