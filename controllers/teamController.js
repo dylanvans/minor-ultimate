@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Team = mongoose.model('Team');
+const User = mongoose.model('User');
 const ToDo = mongoose.model('ToDo');
 const moment = require('moment');
 const rp = require('request-promise');
@@ -119,3 +120,22 @@ exports.myTeam = async (req, res) => {
 		team
 	});
 }
+
+exports.starTeam = async (req, res) => {
+	const stars = req.user.stars.map( obj => obj.toString());
+	// Pull takes the object out of the collection
+	// addToSet adds a value unless the value is already present
+	const operator = stars.includes(req.params.id) ? '$pull' : '$addToSet';
+	const user = await User.findOneAndUpdate(
+		req.user._id, // query
+		{ [operator]: { stars: req.params.id}},
+		{ new: true }
+	);
+
+	res.json(user)
+	console.log('ja')
+}
+
+
+
+

@@ -20,7 +20,7 @@ const userSchema = new Schema({
 		type: mongoose.Schema.ObjectId,
 		ref: 'Team'
 	},
-	favoriteTeams: [
+	stars: [
 		{ type: mongoose.Schema.ObjectId, ref: 'Team' }
 	]
 });

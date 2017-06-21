@@ -30,6 +30,7 @@
     "xo": "^0.18.1"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "compression": "^1.6.2",
     "connect-flash": "^0.1.1",

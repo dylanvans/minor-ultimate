@@ -1,8 +1,11 @@
+const axios = require('axios');
+
 (() => {
 	const app = {
 		init: function () {
 			keepScore.init();
 			collapsible.init();
+			stars.init();
 		}
 	}
 
@@ -44,6 +47,25 @@
 					}
 				});
 			});
+		}
+	}
+
+	const stars = {
+		init: function () {
+			const starForms = document.querySelectorAll('.star-form');
+			starForms.forEach(el => {
+				el.addEventListener('submit', this.sendStar)
+			});
+		},
+		sendStar: function (e) {
+			e.preventDefault();
+			axios
+				.post(this.action)
+				.then(res => {
+					const starClasslist = this.star.classList;
+					starClasslist.contains('star-active') ? starClasslist.remove('star-active') : starClasslist.add('star-active');
+				})
+				.catch(console.error)
 		}
 	}
 

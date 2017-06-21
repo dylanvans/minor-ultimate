@@ -5,6 +5,7 @@ const userController = require('../controllers/userController');
 const loginController = require('../controllers/loginController');
 const todoController = require('../controllers/todoController');
 const gameController = require('../controllers/gameController');
+const starredController = require('../controllers/starredController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 const router = express.Router();
@@ -32,5 +33,10 @@ router.get('/spirit-points/:id', loginController.isLoggedIn, catchErrors(todoCon
 router.post('/spirit-points/:id', loginController.isLoggedIn, catchErrors(todoController.submitPoints));
 
 router.get('/team/:name', catchErrors(teamController.teamPage));
+
+router.get('/starred', loginController.isLoggedIn,  starredController.overviewPage);
+
+// API
+router.post('/api/teams/:id/star', catchErrors(teamController.starTeam));
 
 module.exports = router;

@@ -1,7 +1,17 @@
 <% include partials/header.ejs %>
 <div class="container">
-	<header class="header-my-team">
+	<header class="header-team-page">
 		<h2><%= team.name %></h2>
+		<% if (user) { %>
+			<form action="/api/teams/<%= team._id %>/star" class="star-form" method="POST">
+				<%  const starString = user.stars.map(obj => obj.toString())
+					const starClass = starString.includes(team._id.toString()) ? 'star-active' : ''
+				%>
+				<button type="submit" name="star" class="<%= starClass %>">
+					<% include ../public/img/icon-fav.svg %>
+				</button>
+			</form>
+		<% } %>
 	</header>
 	<% if(team.liveGames.length) { %>
 	<section class="dark-section">

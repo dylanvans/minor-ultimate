@@ -56,7 +56,7 @@ input {
 	border-radius: $border-radius;
 }
 
-button, .button {
+.button {
 	text-decoration: none;
 	border: 0;
 	text-align: center;
@@ -108,7 +108,7 @@ h1, h2, h3, h4 {
 	background-color: $sub-orange;
 	border: 1px solid $main-white;
 	border-bottom: 0;
-	width: calc(100%/3);
+	width: calc(100%/4);
 }
 
 .navbar-list li.active-nav {
@@ -139,8 +139,17 @@ h1, h2, h3, h4 {
 	padding-top: $margin*.5;
 }
 
+.navbar-list li img {
+	will-change: transform;
+	transition: transform .1s ease-in-out;
+}
+
+.navbar-list li a:active img {
+	transform: scale(.8);
+}
+
 .navbar .navbar-account-list {
-	padding: $margin;
+	padding: $margin*.5 $margin;
 	display: flex;
     align-items: center;
     justify-content: space-between;
@@ -373,7 +382,7 @@ h1, h2, h3, h4 {
 	@extend .center;
 }
 
-.header-my-team h2 {
+header h2 {
 	color: $main-blue;
 	margin: 0;
 	box-shadow: inset 0 -0.1em 0 0 $sub-orange;
@@ -425,6 +434,20 @@ h1, h2, h3, h4 {
 
 .team-live-teams .live-score {
 	font-size: 3.2em;
+}
+
+// Team page
+// ===========
+.header-team-page {
+	box-shadow: $box-shadow;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header-team-page button[name="star"] svg {
+	width: 3em;
+	height: 3em;
 }
 
 // Spirit
@@ -521,6 +544,27 @@ h1, h2, h3, h4 {
 .collapse-control img {
 	transition: all .2s ease-in-out;
 	height: 2em;
+}
+
+// Team - Star
+// ===========
+button[name="star"] {
+	will-change: transform;
+	transition: all .3s ease-in-out;
+	background: 0;
+	border: 0;
+}
+
+button[name="star"]:focus {
+	outline: 0;
+}
+
+button[name="star"]:active {
+	transform: scale(.7);
+}
+
+.star-active .svg-star-group {
+	fill: $main-orange;
 }
 
 
