@@ -11,6 +11,7 @@ const leaguevineClientSecretKey = process.env.LEAGUEVINE_CLIENT_SECRET_KEY;
 const urlGetAuthCode = `http://www.playwithlv.com/oauth2/authorize/?client_id=${leaguevineClientId}&response_type=code&redirect_uri=${leaguevineRedirectURI}&scope=universal`;
 const urlGetAccessToken = `http://www.playwithlv.com/oauth2/token/?client_id=${leaguevineClientId}&client_secret=${leaguevineClientSecretKey}&grant_type=authorization_code&redirect_uri=${leaguevineRedirectURI}`;
 
+let redirectTo = '/my-team';
 // exports.loginPage = (req, res) => {
 // 	res.render('login', {
 // 		title: 'Login',
@@ -29,12 +30,13 @@ exports.onSuccess = (req, res) => {
 	});
 }
 
-exports.login = passport.authenticate('local', {
-	failureRedirect: '/login',
-	failureFlash: 'Oops, something went wrong logging you in',
-	successRedirect: '/',
-	successFlash: 'You are now logged in'
-});
+exports.login =
+	passport.authenticate('local', {
+		failureRedirect: '/login',
+		failureFlash: 'Oops, something went wrong logging you in',
+		successRedirect: redirectTo,
+		successFlash: 'You are now logged in'
+	});
 
 exports.logout = (req, res) => {
 	req.flash('success', 'You are now logged out')
@@ -43,6 +45,7 @@ exports.logout = (req, res) => {
 }
 
 exports.isLoggedIn = (req, res, next) => {
+	req.session.redirectTo = req.originalUrl;
 	if(req.isAuthenticated()) {
 		next();
 		return;

@@ -13,6 +13,7 @@ require('./models/User');
 require('./models/Team');
 require('./models/LiveGame');
 require('./models/ToDo');
+require('./models/Update');
 
 // Require
 const path = require('path');

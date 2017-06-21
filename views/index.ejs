@@ -29,7 +29,7 @@
 						</div>
 					</div>
 				</a>
-			<% }) %>
+			<% }); %>
 		</div>
 		<div class="collapse-control">
 			<img src="/img/icon-more.png" alt="more icon">
@@ -43,9 +43,18 @@
 		</div>
 	</section>
 	<% } %>
+	<% if(updates.length) { %>
+	<section>
+		<h2>Updates</h2>
+		<% updates.forEach(update => { %>
+			<p><%= update.message %></p>
+		<% }); %>
+	</section>
+	<%} else { %>
 	<section>
 		<h2>Updates</h2>
 		<p>There are no updates at the moment</p>
 	</section>
+	<% } %>
 </div>
 <% include partials/footer.ejs %>

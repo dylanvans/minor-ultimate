@@ -14,7 +14,7 @@ const momentFormat = 'YYYY-MM-DDTHH:mm:ss+Z';
 
 exports.teamPage = async (req, res) => {
 	const currentTime = moment().format(momentFormat);
-	const team = await Team.findOne({slug: req.params.name});
+	const team = await Team.findOne({slug: req.params.name}).populate('members');
 
 	let games;
 

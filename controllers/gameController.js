@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Team = mongoose.model('Team');
+const LiveGame = mongoose.model('LiveGame');
+const Update = mongoose.model('Update');
 const rp = require('request-promise');
 const leaguevineHandler = require('../handlers/leaguevine');
 require('dotenv').config();
@@ -36,6 +38,27 @@ exports.gamePage = async (req, res) => {
 }
 
 exports.updateScore = async (req, res) => {
+	const game = await LiveGame.findOne({gameId: req.params.id});
+	const team1 = await Team.findById(game.team1).populate('members starredUsers');
+	const team2 = await Team.findById(game.team2).populate('members starredUsers');
+
+	let users = team1.members.concat(team2.starredUsers); 
+
+	// Filter duplicates out of the array source: https://stackoverflow.com/a/36744732/8038487
+	users = users.filter((thing, index, self) => self.findIndex((t) => {return t.place === thing.place && t.name === thing.name; }) === index).map(obj => {
+		return obj._id
+	});
+
+	if (game) {
+		const update = new Update({
+			message: `Score was updated to ${req.body.team1Score} - ${req.body.team1Score} in game between ${team1.shortName} versus ${team2.shortName}`,
+			teams: [game.team1, game.team2],
+			users,
+			link: `/game/${req.params.id}`,
+			updateType: 'score-update'
+		}).save(() => {});
+	}
+
 	const updateScoreOptions = {
 		method: 'POST',
 	    uri: `http://api.playwithlv.com/v1/game_scores/`,
@@ -51,9 +74,8 @@ exports.updateScore = async (req, res) => {
 	    json: true
 	};
 
-	const game = await rp(updateScoreOptions)
+	const request = await rp(updateScoreOptions)
 		.then(data => {
-			console.log(data)
 			leaguevineHandler.setLiveGames()
 			return data;
 		})

@@ -35,10 +35,22 @@ teamSchema.index({
 	leaguevineId: 1
 });
 
+teamSchema.virtual('members', {
+	ref: 'User',
+	localField: '_id', // field on the team
+	foreignField: 'team' // field on the user
+});
+
+teamSchema.virtual('starredUsers', {
+	ref: 'User',
+	localField: '_id', // field on the team
+	foreignField: 'stars' // field on the user
+});
+
 teamSchema.virtual('todo', {
 	ref: 'ToDo',
-	localField: '_id', // field on the user
-	foreignField: 'team' // field on the Team
+	localField: '_id', // field on the team
+	foreignField: 'team' // field on the todo
 });
 
 teamSchema.pre('save', function(next) {
