@@ -56,7 +56,7 @@ exports.updateScore = async (req, res) => {
 
 
 		const update = new Update({
-			message: `Score was updated to ${req.body.team1Score}-${req.body.team1Score} in game: ${team1.shortName} vs ${team2.shortName}`,
+			message: `Score was updated to ${req.body.team1Score}-${req.body.team2Score} in game: ${team1.shortName} vs ${team2.shortName}`,
 			teams: [team1._id, team2._id],
 			users,
 			link: `/game/${req.params.id}`,
