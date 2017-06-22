@@ -47,7 +47,14 @@
 	<section>
 		<h2>Updates</h2>
 		<% updates.forEach(update => { %>
-			<p><%= update.message %></p>
+			<a href="<%=update.link%>" class="update-block">
+				<div class="container-update-type">
+					<img src="/img/icon-<%= update.updateType %>.png" alt="type <%= update.updateType %>">
+				</div>
+				<div class="container-update-message">
+					<p><%= update.message %></p>
+				</div>
+			</a>
 		<% }); %>
 	</section>
 	<%} else { %>

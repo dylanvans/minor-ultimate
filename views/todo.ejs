@@ -2,7 +2,7 @@
 	<section class="section-spirit">
 		<h1 class="main-heading"><%= title %></h1>
 		<p>Game against:<%= opponent.name %></p>
-		<form action="/spirit-points/<%= toDo._id %>" method="POST" class="form-spirit">
+		<form action="/spirit-points/<%= toDo._id %>/?opponent=<%= opponent.id %>" method="POST" class="form-spirit">
 			<fieldset>
 				<legend>Rules Knowledge and Use</legend>
 				<div class="container-checkboxes">

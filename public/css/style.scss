@@ -194,6 +194,39 @@ h1, h2, h3, h4 {
 	color: $main-white;
 }
 
+// Home - update
+// ===========
+.update-block {
+	background-color: $main-blue;
+	padding: $margin $margin;
+	border-radius: $border-radius;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-decoration: none;
+	color: $main-white;
+	margin-bottom: $margin*.5;
+}
+
+.update-block:nth-child(odd) {
+	background-color: $main-blue-shadow;
+}
+
+.update-block p {
+	margin: 0;
+	font-size: .9em;
+}
+
+.container-update-type {
+	@extend .center;
+	width: 20%;
+	margin-right: $margin;
+}
+
+.container-update-type img {
+	height: 2.5em;
+}
+
 
 // Starred page
 // ===========
@@ -248,6 +281,10 @@ h1, h2, h3, h4 {
 	color: white;
 	border-radius: $border-radius;
 	font-family: source_sans_prolight;
+}
+
+.game-block:nth-child(odd) {
+	background-color: $main-blue-shadow;
 }
 
 .game-block > div {

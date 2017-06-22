@@ -110,7 +110,7 @@ input, select {
 h1, h2, h3, h4 {
   font-family: 'catorze27_bold', sans-serif;
   letter-spacing: 0.156em;
-  color: #0B6E99;
+  color: #0E729E;
   margin-top: 0;
   margin-bottom: 0.97em; }
 
@@ -184,7 +184,7 @@ h1, h2, h3, h4 {
 .dark-section {
   display: flex;
   flex-direction: column;
-  background-color: #0B6E99;
+  background-color: #0E729E;
   color: #FFFFFF; }
 
 .dark-section-content {
@@ -198,6 +198,31 @@ h1, h2, h3, h4 {
 
 .dark-section h1, .dark-section h2 {
   color: #FFFFFF; }
+
+.update-block {
+  background-color: #2CAAE1;
+  padding: 0.97em 0.97em;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #FFFFFF;
+  margin-bottom: 0.485em; }
+
+.update-block:nth-child(odd) {
+  background-color: #268ebb; }
+
+.update-block p {
+  margin: 0;
+  font-size: .9em; }
+
+.container-update-type {
+  width: 20%;
+  margin-right: 0.97em; }
+
+.container-update-type img {
+  height: 2.5em; }
 
 .container-starred-team {
   border-radius: 5px;
@@ -241,6 +266,9 @@ h1, h2, h3, h4 {
   color: white;
   border-radius: 5px;
   font-family: source_sans_prolight; }
+
+.game-block:nth-child(odd) {
+  background-color: #268ebb; }
 
 .game-block > div {
   display: flex;
@@ -328,7 +356,7 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   background-color: #2CAAE1;
-  color: #0B6E99;
+  color: #0E729E;
   text-transform: uppercase;
   border-radius: 5px; }
 
@@ -382,7 +410,7 @@ header h2 {
   margin: 0;
   box-shadow: inset 0 -0.1em 0 0 #FFD999; }
 
-.center, .header-my-team, .team-live-teams div, .container-checkboxes label, .collapse-control, .container-number-input {
+.center, .container-update-type, .header-my-team, .team-live-teams div, .container-checkboxes label, .collapse-control, .container-number-input {
   display: flex;
   align-items: center;
   justify-content: center; }
@@ -401,7 +429,7 @@ header h2 {
   display: flex;
   flex-direction: column;
   background-color: #2CAAE1;
-  color: #0B6E99;
+  color: #0E729E;
   text-transform: uppercase;
   border-radius: 5px; }
 
@@ -446,7 +474,7 @@ header button[name="star"] svg {
   height: 3em; }
 
 .section-spirit {
-  color: #0B6E99; }
+  color: #0E729E; }
 
 .container-checkboxes {
   display: flex; }
@@ -510,7 +538,7 @@ header button[name="star"] svg {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(to bottom, transparent, #0B6E99); }
+  background-image: linear-gradient(to bottom, transparent, #0E729E); }
 
 .collapse-control img {
   transition: all .2s ease-in-out;
