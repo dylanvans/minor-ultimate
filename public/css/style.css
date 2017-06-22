@@ -208,7 +208,7 @@ h1, h2, h3, h4 {
   justify-content: space-between;
   text-decoration: none;
   color: #FFFFFF;
-  margin-bottom: 0.485em; }
+  margin-bottom: 0.97em; }
 
 .update-block:nth-child(odd) {
   background-color: #268ebb; }
@@ -352,7 +352,7 @@ h1, h2, h3, h4 {
   align-items: center;
   margin: 0.97em; }
 
-.container-live-game {
+.container-live-game.game-block {
   display: flex;
   flex-direction: column;
   background-color: #2CAAE1;

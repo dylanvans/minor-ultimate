@@ -38,6 +38,32 @@ exports.gamePage = async (req, res) => {
 }
 
 exports.updateScore = async (req, res) => {
+	const game = await LiveGame.findOne({gameId: req.params.id});
+
+	if (game) {
+		console.log(game)
+		const team1 = await Team.findById(game.team1).populate('members starredUsers');
+		const team2 = await Team.findById(game.team2).populate('members starredUsers');
+
+		let members = team1.members.concat(team2.members); 
+		let starredUsers = team1.starredUsers.concat(team2.starredUsers); 
+		let users = members.concat(starredUsers); 
+
+		// Filter duplicates out of the array source: https://stackoverflow.com/a/36744732/8038487
+		users = users.filter((thing, index, self) => self.findIndex((t) => {return t.place === thing.place && t.name === thing.name; }) === index).map(obj => {
+			return obj._id
+		});
+
+
+		const update = new Update({
+			message: `Score was updated to ${req.body.team1Score}-${req.body.team1Score} in game: ${team1.shortName} vs ${team2.shortName}`,
+			teams: [team1._id, team2._id],
+			users,
+			link: `/game/${req.params.id}`,
+			updateType: 'score-update'
+		}).save(() => {});
+	}
+
 	const updateScoreOptions = {
 		method: 'POST',
 	    uri: `http://api.playwithlv.com/v1/game_scores/`,
@@ -52,7 +78,7 @@ exports.updateScore = async (req, res) => {
 	    },
 	    json: true
 	};
-
+console.log('ja hallo')
 	const request = await rp(updateScoreOptions)
 		.then(data => {
 			leaguevineHandler.setLiveGames()
@@ -63,27 +89,4 @@ exports.updateScore = async (req, res) => {
 	    });
 
 	res.redirect(req.get('referer'));
-
-	const game = await LiveGame.findOne({gameId: req.params.id});
-
-	if (game) {
-		const team1 = await Team.findById(game.team1).populate('members starredUsers');
-		const team2 = await Team.findById(game.team2).populate('members starredUsers');
-
-		let users = team1.members.concat(team2.starredUsers); 
-
-		// Filter duplicates out of the array source: https://stackoverflow.com/a/36744732/8038487
-		users = users.filter((thing, index, self) => self.findIndex((t) => {return t.place === thing.place && t.name === thing.name; }) === index).map(obj => {
-			return obj._id
-		});
-
-
-		const update = new Update({
-			message: `Score was updated to ${req.body.team1Score}-${req.body.team1Score} in game between ${team1.shortName} versus ${team2.shortName}`,
-			teams: [team1._id, team2._id],
-			users,
-			link: `/game/${req.params.id}`,
-			updateType: 'score-update'
-		}).save(() => {});
-	}
 }

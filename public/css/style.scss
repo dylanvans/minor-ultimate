@@ -205,7 +205,7 @@ h1, h2, h3, h4 {
 	justify-content: space-between;
 	text-decoration: none;
 	color: $main-white;
-	margin-bottom: $margin*.5;
+	margin-bottom: $margin;
 }
 
 .update-block:nth-child(odd) {
@@ -385,7 +385,7 @@ h1, h2, h3, h4 {
 	margin: $margin;
 }
 
-.container-live-game {
+.container-live-game.game-block {
 	display: flex;
 	flex-direction: column;
 	background-color: $main-blue;

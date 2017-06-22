@@ -15,7 +15,6 @@ exports.homePage = async (req, res) => {
 	let updates = [];
 	if(req.user) {
 		updates = await Update.find({users: req.user._id})
-		console.log(updates)
 	}
 
 
