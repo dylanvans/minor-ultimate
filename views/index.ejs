@@ -2,7 +2,7 @@
 <div class="container">
 	<% if(liveGames.length) { %>
 	<section class="dark-section collapsible-content">
-		<div class="container">
+		<div class="container section-inner">
 			<h2>Live Games</h2>
 			<% liveGames.forEach(game => { %>
 				<a class="game-block container-live-game" href="game/<%= game.gameId %>">
@@ -37,7 +37,7 @@
 	</section>
 	<%} else { %>
 	<section class="dark-section">
-		<div class="container">
+		<div class="container section-inner">
 			<h2>Live Games</h2>
 			<p>There are no live games at the moment</p>
 		</div>
@@ -45,22 +45,26 @@
 	<% } %>
 	<% if(updates.length) { %>
 	<section>
-		<h2>Updates</h2>
-		<% updates.forEach(update => { %>
-			<a href="<%=update.link%>" class="update-block">
-				<div class="container-update-type">
-					<img src="/img/icon-<%= update.updateType %>.png" alt="type <%= update.updateType %>">
-				</div>
-				<div class="container-update-message">
-					<p><%= update.message %></p>
-				</div>
-			</a>
-		<% }); %>
+		<div class="section-inner">
+			<h2>Updates</h2>
+			<% updates.forEach(update => { %>
+				<a href="<%=update.link%>" class="update-block">
+					<div class="container-update-type">
+						<img src="/img/icon-<%= update.updateType %>.png" alt="type <%= update.updateType %>">
+					</div>
+					<div class="container-update-message">
+						<p><%= update.message %></p>
+					</div>
+				</a>
+			<% }); %>
+		</div>
 	</section>
 	<%} else { %>
 	<section>
-		<h2>Updates</h2>
-		<p>There are no updates at the moment</p>
+		<div class="section-inner">
+			<h2>Updates</h2>
+			<p>There are no updates at the moment</p>
+		</div>
 	</section>
 	<% } %>
 </div>

@@ -1,6 +1,6 @@
 <% include partials/header.ejs %>
 	<section class="dark-section">
-		<form action="/game/<%= game.id %>/update-score" method="POST">
+		<form action="/game/<%= game.id %>/update-score" class="section-inner" method="POST">
 			<div class="container-score">
 				<div class="score-team">
 					<label for="team1-score" class="score-team-name"><a href="/team/<%= game.team1Slug %>"><%= game.team_1.short_name %></a></label>
@@ -23,6 +23,8 @@
 		</form>
 	</section>
 	<section>
-		<h2>Previous Scores</h2>
+		<div class="section-inner">
+			<h2>Previous Scores</h2>
+		</div>
 	</section>
 <% include partials/footer.ejs %>

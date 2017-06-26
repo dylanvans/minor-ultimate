@@ -1,6 +1,6 @@
 <% include partials/header.ejs %>
-<div class="container">
-	<section class="dark-section">
+<section class="dark-section">
+	<div class="section-inner">
 		<h1 class="main-heading"><%= title %></h1>
 		<div class="dark-section-content container-form">
 			<form class="login-form" action="/register" method="POST">
@@ -21,11 +21,10 @@
 					<input type="password" id="password" name="password" required>
 					<label for="password-confirm">Confirm Password</label>
 					<input type="password" id="password-confirm" name="password-confirm" required>
-				</fieldset>
-				
+				</fieldset>	
 				<button type="submit" class="button">Register</button>
 			</form>
 		</div>
-	</section>
-</div>
+	</div>
+</section>
 <% include partials/footer.ejs %>

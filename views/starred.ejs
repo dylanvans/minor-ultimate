@@ -1,7 +1,7 @@
 <% include partials/header.ejs %>
-<div class="container">
-	<% if(teams.length) { %>
-	<section>
+<% if(teams.length) { %>
+<section>
+	<div class="section-inner">
 		<h1>Starred Teams</h1>
 		<div class="starred-teams">		
 			<% teams.forEach(team => { %>
@@ -24,13 +24,15 @@
 					</section>
 				</a>
 			<% }); %>
-		</div>
-	</section>
-	<% } else { %>
-	<section>
+		</div>		
+	</div>
+</section>
+<% } else { %>
+<section>
+	<div class="section-inner">
 		<h1>Starred Teams</h1>
-		<p>You haven't starred a team yet</p>
-	</section>
-	<% } %>
-</div>
+		<p>You haven't starred a team yet</p>		
+	</div>
+</section>
+<% } %>
 <% include partials/footer.ejs %>
