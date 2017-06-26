@@ -158,6 +158,7 @@ h1, h2, h3, h4 {
   padding-top: 0.485em; }
 
 .navbar-list li img {
+  height: 50px;
   will-change: transform;
   transition: transform .1s ease-in-out; }
 
