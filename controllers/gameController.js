@@ -40,6 +40,7 @@ exports.gamePage = async (req, res) => {
 exports.updateScore = async (req, res) => {
 	const game = await LiveGame.findOne({gameId: req.params.id});
 
+
 	if (game) {
 		console.log(game)
 		const team1 = await Team.findById(game.team1).populate('members starredUsers');
@@ -74,11 +75,11 @@ exports.updateScore = async (req, res) => {
 	    	game_id: req.params.id,
 			team_1_score: req.body.team1Score,
 			team_2_score: req.body.team2Score,
-			is_final: false
+			is_final: (req.body.final == 'on')
 	    },
 	    json: true
 	};
-console.log('ja hallo')
+
 	const request = await rp(updateScoreOptions)
 		.then(data => {
 			leaguevineHandler.setLiveGames()

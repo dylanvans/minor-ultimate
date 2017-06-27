@@ -18,7 +18,8 @@ const liveGameSchema = new mongoose.Schema({
 	startDate: String,
 	startTime: String,
 	swissRoundId: String,
-	field: String
+	field: String,
+	isFinal: Boolean
 });
 
 liveGameSchema.pre('save', function(next) {

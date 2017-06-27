@@ -16,6 +16,7 @@ exports.spiritPoints = async (req, res) => {
 
 exports.submitPoints = async (req, res) => {
 	ToDo.findOneAndUpdate({_id: req.params.id, team: req.user.team, todoType: 'spirit'}, {status: 'done'}, () => {
+		req.flash('success', 'Your spirit points were successfully submitted');
 		res.redirect('/my-team');
 	});
 

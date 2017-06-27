@@ -16,6 +16,9 @@ const updateSchema = new mongoose.Schema({
 		required: 'Please, fill in a message', // Acts as true -> error meassage
 		trim: true
 	},
+	createdAt: { 
+		type: Date, default: Date.now
+	},
 	link: String,
 	updateType: String
 });

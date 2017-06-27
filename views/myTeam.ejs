@@ -7,12 +7,19 @@
 	<section>
 		<div class="section-inner">
 			<h2>To Do</h2>
-			<% team.todo.forEach(toDo => { %>
-				<div class="container-todo">
-					<p><%- toDo.text %></p>
-					<a class="button" href="/spirit-points/<%= toDo._id %>">GO</a>
-				</div>
-			<% }) %>
+			<% team.todo.forEach(toDo => { 
+				if(toDo.todoType == 'spirit') { %>
+					<div class="container-todo">
+						<p><%- toDo.text %></p>
+						<a class="button" href="/spirit-points/<%= toDo._id %>">GO</a>
+					</div>
+			<% 	} else if (toDo.todoType == 'score') { %>
+					<div class="container-todo">
+						<p><%- toDo.text %></p>
+						<a class="button" href="/game/<%= toDo.game %>">GO</a>
+					</div>
+			<% 	}
+			}); %>
 		</div>
 	</section>
 	<% } else { %>
@@ -107,10 +114,5 @@
 		</div>
 	</section>
 	<% } %>
-	<section>
-		<div class="section-inner">
-			<h2>Swiss Standing</h2>			
-		</div>
-	</section>
 </div>
 <% include partials/footer.ejs %>

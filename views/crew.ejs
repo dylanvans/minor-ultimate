@@ -1,0 +1,17 @@
+<% include partials/header.ejs %>
+	<header>
+		<div class="section-inner">
+			<h1 class="main-heading"><%= title %></h1>
+		</div>
+	</header>
+	<section class="dark-section">
+		<div class="section-inner">
+			<h2>Send update to all users</h2>
+			<form class="dark-section-content container-form" action="/tournament-update" method="POST">
+				<label for="tournament-update">Tournament Update</label>
+				<textarea name="tournamentUpdate" id="tournament-update"></textarea>
+				<button class="button" type="submit">Send</button>
+			</form>			
+		</div>
+	</section>
+<% include partials/footer.ejs %>

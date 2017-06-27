@@ -12,21 +12,63 @@ const tournamentId = process.env.TOURNAMENTID;
 
 exports.homePage = async (req, res) => {
 	const liveGames = await LiveGame.find().populate('team1 team2');
-	let updates = [];
+
+    const swissStandingOptions = {
+        uri: 'http://api.playwithlv.com/v1/swiss_rounds/',
+        qs: {
+            tournament_id: tournamentId,
+            access_token: universalAccessToken
+        },
+        json: true
+    };
+
+	let swissStanding = await rp(swissStandingOptions)
+        .then(data => {
+        	return data.objects[0].standings;
+        })
+        .catch(err => {
+            console.log(`Oops API call failed: ${err}`)
+        });
+
+	let userUpdates = [];
+	const generalUpdates = await Update.find({ updateType: 'tournament-update' });
+
 	if(req.user) {
-		updates = await Update.find({users: req.user._id})
+		userUpdates = await Update.find({users: req.user._id})
 	}
 
+	let updates = generalUpdates.concat(userUpdates);
+	updates = updates.sort((a,b) => {
+		return new Date(b.createdAt) - new Date(a.createdAt);
+	});
 
 	res.render('index', {
 		title: 'Home',
 		liveGames,
-		updates
+		updates,
+		swissStanding
 	})
 }
 
 exports.infoPage = (req, res) => {
 	res.render('info', {
-		title: 'Info',
+		title: 'Info'
 	})
+}
+
+exports.crew = (req, res) => {
+	res.render('crew', {
+		title: 'Crew'
+	})
+}
+
+exports.tournamentUpdate = (req, res) => {
+	const update = new Update({
+		message: req.body.tournamentUpdate,
+		link: `/info`,
+		updateType: 'tournament-update'
+	}).save(() => {
+		req.flash('success', 'Your tournament update is posted');
+		res.redirect('/');
+	});
 }

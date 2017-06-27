@@ -3,7 +3,18 @@
 	<% if(liveGames.length) { %>
 	<section class="dark-section collapsible-content">
 		<div class="container section-inner">
-			<h2>Live Games</h2>
+			<header class="header-filter">
+				<h2>Live Games</h2>
+				<% if(user) { %>
+				<div class="container-select">
+					<select name="game-filter" id="game-filter">
+						<option value="all">All</option>
+						<option value="starred">Starred</option>
+						<option value="my-team">MyTeam</option>
+					</select>					
+				</div>
+				<% } %>
+			</header>
 			<% liveGames.forEach(game => { %>
 				<a class="game-block container-live-game" href="game/<%= game.gameId %>">
 					<div class="container-game-info">
@@ -44,9 +55,20 @@
 	</section>
 	<% } %>
 	<% if(updates.length) { %>
-	<section>
+	<section class="<% if(updates.length > 4) {%>collapsible-content<%}%>">
 		<div class="section-inner">
-			<h2>Updates</h2>
+			<header class="header-filter">
+				<h2>Updates</h2>
+				<% if(user) { %>
+				<div class="container-select">
+					<select name="game-filter" id="game-filter">
+						<option value="all">All</option>
+						<option value="starred">Starred</option>
+						<option value="my-team">MyTeam</option>
+					</select>
+				</div>
+				<% } %>
+			</header>
 			<% updates.forEach(update => { %>
 				<a href="<%=update.link%>" class="update-block">
 					<div class="container-update-type">
@@ -58,6 +80,11 @@
 				</a>
 			<% }); %>
 		</div>
+		<% if(updates.length > 4) {%>
+		<div class="collapse-control">
+			<img src="/img/icon-more.svg" alt="more icon">
+		</div>
+		<%}%>
 	</section>
 	<%} else { %>
 	<section>
@@ -67,5 +94,20 @@
 		</div>
 	</section>
 	<% } %>
+	<section class="collapsible-content">
+		<div class="section-inner">
+			<h2>Swiss Standing</h2>
+			<% swissStanding.forEach((rank, i) => { %>
+			<section class="standing-block">
+				<p><%= i+1 %></p>
+				<p><%= rank.team.name %></p>
+				<p><%= rank.swiss_score %></p>
+			</section>
+			<% }); %>
+		</div>
+		<div class="collapse-control">
+			<img src="/img/icon-more.svg" alt="more icon">
+		</div>
+	</section>
 </div>
 <% include partials/footer.ejs %>

@@ -63,7 +63,8 @@ exports.setLiveGames = async () => {
                     startDate: liveGames[i].start_time,
                     startTime: startTime,
                     swissRoundId: liveGames[i].swiss_round_id,
-                    field: liveGames[i].game_site.name
+                    field: liveGames[i].game_site.name,
+                    isFinal: (liveGames[i].winner_id ? true : false)
                 }
 
                 setTodo(gameFormatted);
@@ -76,6 +77,7 @@ exports.setLiveGames = async () => {
         });
 
     function setTodo(game) {
+        // For both teams in the game
         for (var i = 0; i < 2; i++) {
             const team = (i + 1 == 1 ? game.team1 : game.team2);
             const opponent = (i + 1 == 1 ? game.team2 : game.team1);
@@ -89,16 +91,35 @@ exports.setLiveGames = async () => {
                 status: 'todo'
             }
 
-            // const scoreTodo = {
-            //     team: i++ == 1 ? game.team1 : game.team2
-            //     text:`Please submit your final score for the match against ${i++ == 1 ? game.team2.name : game.team1.name}`
-            //     todoType: score
-            //     status:
-            // }
+            const scoreTodo = {
+                team: team,
+                opponent: opponent,
+                game: game.gameId,
+                text:`Please submit <span>the final score</span> for the match against <span>${opponent.name}</span>`,
+                todoType: 'score',
+                status: 'todo'
+            }
+
+            if(!game.isFinal) {
+                ToDo.findOneAndUpdate({ 
+                    team: scoreTodo.team,
+                    opponent: scoreTodo.opponent,
+                    game: game.gameId,
+                    todoType: scoreTodo.todoType
+                }, scoreTodo, {upsert: true}, () => {});
+            } else {
+                ToDo.remove({
+                    team: scoreTodo.team,
+                    opponent: scoreTodo.opponent,
+                    game: game.gameId,
+                    todoType: scoreTodo.todoType
+                });
+            }
 
             ToDo.findOneAndUpdate({ 
                 team: spiritTodo.team,
                 opponent: spiritTodo.opponent,
+                game: game.gameId,
                 todoType: spiritTodo.todoType
             }, spiritTodo, {upsert: true}, () => {});
         }

@@ -10,6 +10,10 @@ body {
 	font-family: 'source_sans_prolight', sans-serif;
 }
 
+main > header {
+	padding: $margin;
+}
+
 main, footer {
 	box-sizing: border-box;
 	position: relative;
@@ -28,8 +32,8 @@ main, footer {
 	max-width: 30em;
 }
 
-main header {
-	padding: $margin;
+main > section:only-child {
+	min-height: 70vh; 
 }
 
 p {
@@ -46,6 +50,13 @@ a {
 
 // Form
 // ===========
+form {
+	color: $main-white;
+}
+
+form a {
+	color: $main-white;	
+}
 
 fieldset {
 	border: 0;
@@ -54,7 +65,7 @@ fieldset {
 	display: flex;
 }
 
-input, select {
+input, select, textarea {
 	box-sizing: border-box;
 	border: 0;
 	width: 100%;
@@ -211,7 +222,6 @@ h1, h2, h3, h4 {
 	border-radius: $border-radius;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	text-decoration: none;
 	color: $main-white;
 	margin-bottom: $margin;
@@ -219,6 +229,10 @@ h1, h2, h3, h4 {
 
 .update-block:nth-child(odd) {
 	background-color: $main-blue-shadow;
+}
+
+.container-update-message {
+	width: 100%;
 }
 
 .update-block p {
@@ -234,6 +248,13 @@ h1, h2, h3, h4 {
 
 .container-update-type img {
 	height: 2.5em;
+}
+
+// Home - standing
+// ===========
+.standing-block {
+	@extend .update-block;
+	justify-content: space-between;
 }
 
 
@@ -438,6 +459,7 @@ h1, h2, h3, h4 {
 
 .score-team {
 	padding: $margin;
+	font-family: 'catorze27_bold', sans-serif;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -449,13 +471,72 @@ h1, h2, h3, h4 {
 }
 
 .score-team-name {
+	letter-spacing: $letter-spacing;
+	font-size: 1.2em;
 	text-transform: uppercase;
 }
 
 .score-team-score {
 	padding: $margin;
-	font-family: 'catorze27_bold', sans-serif;
 	font-size: 3em;
+}
+
+.container-final {
+	color: $main-white;
+	display: flex;
+	justify-content: center;
+}
+
+.container-final input {
+	width: auto;
+}
+
+
+// Filter
+// ===========
+.header-filter {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: $margin;
+}
+
+.header-filter h2 {
+	margin: 0;
+}
+
+.container-select {
+	position: relative;
+	border-radius: $border-radius;
+	color: $main-white;
+	background-color: $main-orange;
+
+	&:before {
+		content: ' ';
+		position: absolute;
+		top: 0;
+		right: 1em;
+		height: 1em;
+		width: 1em;
+		background-image: url('../img/icon-filter.png');
+		background-size: 1em 1em;
+		pointer-events: none;
+	}
+}
+
+.header-filter select {
+	padding-right: $margin;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+ 	background-color: $main-orange;
+    color: $main-white;
+	width: auto;
+	text-transform: uppercase;
+	font-family: source_sans_prolight, sans-serif;
+	font-size: .9em;
+	height: 100%;
+	padding: $margin*.3 $margin;
 }
 
 
@@ -463,10 +544,11 @@ h1, h2, h3, h4 {
 // ===========
 .header-my-team {
 	box-shadow: $box-shadow;
+	padding: $margin;
 	@extend .center;
 }
 
-header h2 {
+.header-my-team h2, .header-team-page h2 {
 	color: $main-blue;
 	margin: 0;
 	box-shadow: inset 0 -0.1em 0 0 $sub-orange;
@@ -540,6 +622,7 @@ header h2 {
 
 .header-team-page {
 	box-shadow: $box-shadow;
+	padding: $margin;
 }
 
 .header-team-page > .section-inner {

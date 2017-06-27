@@ -35,6 +35,9 @@ router.get('/team/:name', catchErrors(teamController.teamPage));
 
 router.get('/starred', loginController.isLoggedIn, catchErrors(teamController.starPage));
 
+router.get('/crew', homeController.crew);
+router.post('/tournament-update', homeController.tournamentUpdate);
+
 // API
 router.post('/api/teams/:id/star', catchErrors(teamController.starTeam));
 
