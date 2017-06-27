@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Team = mongoose.model('Team');
 const LiveGame = mongoose.model('LiveGame');
+const ToDo = mongoose.model('ToDo');
 const Update = mongoose.model('Update');
 const rp = require('request-promise');
 const leaguevineHandler = require('../handlers/leaguevine');
@@ -39,7 +40,6 @@ exports.gamePage = async (req, res) => {
 
 exports.updateScore = async (req, res) => {
 	const game = await LiveGame.findOne({gameId: req.params.id});
-
 
 	if (game) {
 		console.log(game)
@@ -89,5 +89,11 @@ exports.updateScore = async (req, res) => {
 			console.log(`Oops API call failed: ${err}`)
 	    });
 
+	if(req.body.final == 'on') {
+		ToDo.update({game: req.params.id, todoType: 'score'}, {$set: {status: 'done'}}, {multi: true}, () => {});
+	}
+
+	req.flash('success', 'The score of the game was successfully updated');
 	res.redirect(req.get('referer'));
 }
+

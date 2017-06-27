@@ -23,7 +23,6 @@ exports.submitPoints = async (req, res) => {
 	const team = await Team.findById(req.user.team).populate('members');
 	const opponent = await Team.findById(req.query.opponent);
 
-	console.log(req.query)
 	if(team.members.length) {
 		const update = new Update({
 			message: `Spiritpoints for game against ${opponent.shortName} were submitted by ${req.user.name}`,

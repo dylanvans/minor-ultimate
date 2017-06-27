@@ -45,7 +45,7 @@ a {
 }
 
 .js-hide {
-	display: none;
+	display: none !important;
 }
 
 // Form
@@ -514,8 +514,8 @@ h1, h2, h3, h4 {
 	&:before {
 		content: ' ';
 		position: absolute;
-		top: 0;
-		right: 1em;
+		top: 5px;
+		right: 8px;
 		height: 1em;
 		width: 1em;
 		background-image: url('../img/icon-filter.png');
@@ -525,7 +525,6 @@ h1, h2, h3, h4 {
 }
 
 .header-filter select {
-	padding-right: $margin;
 	-webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -533,10 +532,12 @@ h1, h2, h3, h4 {
     color: $main-white;
 	width: auto;
 	text-transform: uppercase;
+	letter-spacing: $letter-spacing;
 	font-family: source_sans_prolight, sans-serif;
-	font-size: .9em;
+	font-size: .85em;
 	height: 100%;
 	padding: $margin*.3 $margin;
+	padding-right: $margin*2;
 }
 
 

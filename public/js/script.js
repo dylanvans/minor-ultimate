@@ -5,6 +5,7 @@ const axios = require('axios');
 		init: function () {
 			keepScore.init();
 			collapsible.init();
+			updateFilter.init();
 			stars.init();
 		}
 	}
@@ -66,6 +67,29 @@ const axios = require('axios');
 					starClasslist.contains('star-active') ? starClasslist.remove('star-active') : starClasslist.add('star-active');
 				})
 				.catch(console.error)
+		}
+	}
+
+	const updateFilter = {
+		init: function () {
+			let hideClass = 'js-hide';
+			const selectEl = document.querySelector('.filter-select');
+
+			if(selectEl) {
+				const updates = document.querySelectorAll('.update-block');
+
+				selectEl.addEventListener('change', function() {
+					updates.forEach(el => {
+						if(this.value == 'all') {
+							el.classList.remove(hideClass)
+						} else if (!(this.value == el.dataset.type)) {
+							el.classList.add(hideClass);
+						} else {
+							el.classList.remove(hideClass)
+						}
+					});
+				});				
+			}
 		}
 	}
 

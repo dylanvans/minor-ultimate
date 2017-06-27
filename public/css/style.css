@@ -82,7 +82,7 @@ a {
   color: inherit; }
 
 .js-hide {
-  display: none; }
+  display: none !important; }
 
 form {
   color: #FFFFFF; }
@@ -451,8 +451,8 @@ h1, h2, h3, h4 {
   .container-select:before {
     content: ' ';
     position: absolute;
-    top: 0;
-    right: 1em;
+    top: 5px;
+    right: 8px;
     height: 1em;
     width: 1em;
     background-image: url("../img/icon-filter.png");
@@ -460,7 +460,6 @@ h1, h2, h3, h4 {
     pointer-events: none; }
 
 .header-filter select {
-  padding-right: 0.97em;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -468,10 +467,12 @@ h1, h2, h3, h4 {
   color: #FFFFFF;
   width: auto;
   text-transform: uppercase;
+  letter-spacing: 0.078em;
   font-family: source_sans_prolight, sans-serif;
-  font-size: .9em;
+  font-size: .85em;
   height: 100%;
-  padding: 0.291em 0.97em; }
+  padding: 0.291em 0.97em;
+  padding-right: 1.94em; }
 
 .header-my-team {
   box-shadow: 0 5px 5px -2px rgba(194, 194, 194, 0.5);

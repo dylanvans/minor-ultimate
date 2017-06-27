@@ -125,11 +125,12 @@ exports.myTeam = async (req, res) => {
 
 exports.starTeam = async (req, res) => {
 	const stars = req.user.stars.map( obj => obj.toString());
+
 	// Pull takes the object out of the collection
 	// addToSet adds a value unless the value is already present
 	const operator = stars.includes(req.params.id) ? '$pull' : '$addToSet';
 	const user = await User.findOneAndUpdate(
-		req.user._id, // query
+		{ _id: req.user._id}, // query
 		{ [operator]: { stars: req.params.id}},
 		{ new: true }
 	);

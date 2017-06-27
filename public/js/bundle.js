@@ -1621,6 +1621,7 @@ var axios = require('axios');
 		init: function init() {
 			keepScore.init();
 			collapsible.init();
+			updateFilter.init();
 			stars.init();
 		}
 	};
@@ -1682,6 +1683,31 @@ var axios = require('axios');
 				var starClasslist = _this2.star.classList;
 				starClasslist.contains('star-active') ? starClasslist.remove('star-active') : starClasslist.add('star-active');
 			}).catch(console.error);
+		}
+	};
+
+	var updateFilter = {
+		init: function init() {
+			var hideClass = 'js-hide';
+			var selectEl = document.querySelector('.filter-select');
+
+			if (selectEl) {
+				var updates = document.querySelectorAll('.update-block');
+
+				selectEl.addEventListener('change', function () {
+					var _this3 = this;
+
+					updates.forEach(function (el) {
+						if (_this3.value == 'all') {
+							el.classList.remove(hideClass);
+						} else if (!(_this3.value == el.dataset.type)) {
+							el.classList.add(hideClass);
+						} else {
+							el.classList.remove(hideClass);
+						}
+					});
+				});
+			}
 		}
 	};
 

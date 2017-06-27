@@ -5,15 +5,6 @@
 		<div class="container section-inner">
 			<header class="header-filter">
 				<h2>Live Games</h2>
-				<% if(user) { %>
-				<div class="container-select">
-					<select name="game-filter" id="game-filter">
-						<option value="all">All</option>
-						<option value="starred">Starred</option>
-						<option value="my-team">MyTeam</option>
-					</select>					
-				</div>
-				<% } %>
 			</header>
 			<% liveGames.forEach(game => { %>
 				<a class="game-block container-live-game" href="game/<%= game.gameId %>">
@@ -61,16 +52,17 @@
 				<h2>Updates</h2>
 				<% if(user) { %>
 				<div class="container-select">
-					<select name="game-filter" id="game-filter">
+					<select class="filter-select" name="game-filter" id="game-filter">
 						<option value="all">All</option>
-						<option value="starred">Starred</option>
-						<option value="my-team">MyTeam</option>
+						<option value="score-update">Scores</option>
+						<option value="to-do">To Do</option>
+						<option value="tournament-update">General</option>
 					</select>
 				</div>
 				<% } %>
 			</header>
 			<% updates.forEach(update => { %>
-				<a href="<%=update.link%>" class="update-block">
+				<a href="<%=update.link%>" class="update-block" data-type="<%= update.updateType %>">
 					<div class="container-update-type">
 						<img src="/img/icon-<%= update.updateType %>.png" alt="type <%= update.updateType %>">
 					</div>
