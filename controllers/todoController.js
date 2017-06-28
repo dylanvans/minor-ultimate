@@ -26,8 +26,8 @@ exports.submitPoints = async (req, res) => {
 			updateType: 'to-do'
 		}).save(() => {});
 	}
-
-	ToDo.findOneAndUpdate({_id: req.params.id, team: req.user.team, todoType: 'spirit'}, {status: 'done'}, () => {
+	
+	ToDo.remove({_id: req.params.id, team: req.user.team, todoType: 'spirit'}, () => {
 		req.flash('success', 'Your spirit points were successfully submitted');
 		res.redirect('/my-team');
 	});
