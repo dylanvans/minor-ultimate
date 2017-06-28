@@ -117,8 +117,14 @@ input, select, textarea {
   text-transform: uppercase;
   border-radius: 5px;
   letter-spacing: 0.117em;
-  padding: 0.485em 0.97em;
-  margin: 0 auto; }
+  padding: 0.679em 0.97em;
+  margin: 0 auto;
+  will-change: all;
+  transition: all .2s ease-in-out; }
+  .button:active {
+    transform: scale(0.9) translateY(5%);
+    background-color: #FFFFFF;
+    color: #FF9E00; }
 
 .container {
   color: #434343; }
@@ -429,9 +435,13 @@ h1, h2, h3, h4 {
 .container-final {
   color: #FFFFFF;
   display: flex;
+  text-transform: uppercase;
+  margin: 0.97em;
+  letter-spacing: 0.078em;
   justify-content: center; }
 
 .container-final input {
+  margin-right: 0.485em;
   width: auto; }
 
 .header-filter {
@@ -636,6 +646,7 @@ button[name="star"]:active {
   fill: #FF9E00; }
 
 .container-number-input {
+  margin-top: 0.97em;
   flex-direction: column; }
 
 .number-arrow {

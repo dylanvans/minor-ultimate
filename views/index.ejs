@@ -4,7 +4,7 @@
 	<section class="dark-section collapsible-content">
 		<div class="container section-inner">
 			<header class="header-filter">
-				<h2>Live Games</h2>
+				<h2>Live Games <span>(<%= liveGames.length %>)</span></h2>
 			</header>
 			<% liveGames.forEach(game => { %>
 				<a class="game-block container-live-game" href="game/<%= game.gameId %>">

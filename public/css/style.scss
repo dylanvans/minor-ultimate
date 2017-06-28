@@ -87,8 +87,16 @@ input, select, textarea {
 	text-transform: uppercase;
 	border-radius: $border-radius;
 	letter-spacing: $letter-spacing*1.5;
-	padding: $margin*.5 $margin;
+	padding: $margin*.7 $margin;
 	margin: 0 auto;
+	will-change: all;
+	transition: all .2s ease-in-out;
+
+	&:active {
+		transform: scale(.9) translateY(5%);	
+		background-color: $main-white;
+		color: $main-orange;
+	}
 }
 
 .container {
@@ -484,12 +492,17 @@ h1, h2, h3, h4 {
 .container-final {
 	color: $main-white;
 	display: flex;
+	text-transform: uppercase;
+	margin: $margin;
+	letter-spacing: $letter-spacing;
 	justify-content: center;
 }
 
 .container-final input {
+	margin-right: $margin*.5;
 	width: auto;
 }
+
 
 
 // Filter
@@ -765,6 +778,7 @@ button[name="star"]:active {
 // ===========
 .container-number-input {
 	@extend .center;
+	margin-top: $margin;
 	flex-direction: column;
 }
 
