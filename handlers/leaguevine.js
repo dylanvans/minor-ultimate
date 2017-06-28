@@ -120,7 +120,8 @@ exports.setLiveGames = async () => {
                 team: spiritTodo.team,
                 opponent: spiritTodo.opponent,
                 game: game.gameId,
-                todoType: spiritTodo.todoType
+                todoType: spiritTodo.todoType,
+                status: 'todo'
             }, spiritTodo, {upsert: true}, () => {});
         }
     }
