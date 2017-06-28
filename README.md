@@ -21,23 +21,23 @@ The app will notify teams when their game is finished and they have to submit th
 ## Features
 - Register/Login users
 - Link users to LeagueVine Team
-- On the 'My Team' page, show the upcoming game, the live game and results
+- On the 'My Team' page, show the next game, the live game and results
 - Show which games on the tournament are live (Homepage)
-- Detail page for every game
-- Detail page for every team
-- Send score updates for teams to LeagueVine 
-- 'To Do' for submitting spirit points
 - Starred teams so users can follow other teams
+- Updates feed on homepage. With updates from the organization, 'My Team' and the starred teams.
+- Organization page to send updates to users(/crew)
+- 'To Do' for submitting spirit points
+- 'To Do' for submitting final score
+- Send score updates for teams to LeagueVine 
 - Feedback to users by means of flash messages
 
 ## To Do
-- [ ] Make 'To Do' for submitting final score
 - [ ] Notify users linked to a team with an open 'To Do'
 - [ ] Filter live games on 'My Team' or 'Starred Teams'
 - [ ] Edit account for users
-- [ ] Display Swiss Standing and highlight the selected team
-- [ ] General updates feed on homepage. With updates from the organization and the starred teams.
-- [ ] Fill info page with information about the tournament
+- [ ] Make organization page password protected
+- [ ] Highlight the selected team in Swiss Standing
+- [ ] Fill info page with relevant information about the tournament
 - [ ] Multiple tournaments functionality 
 
 
